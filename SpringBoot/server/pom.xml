@@ -58,7 +58,6 @@
 			<artifactId>jackson-core</artifactId>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<extensions>
 			<extension>
