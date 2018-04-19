@@ -77,11 +77,18 @@
    <pluginRepositories>
 	   <pluginRepository>
 		   <id>synergian-repo</id>
-		   <url>https://github.com/lios8924/PVT.git</url>
+		   <url>https://raw.github.com/synergian/wagon-git/releases</url>
 	   </pluginRepository>
 
    </pluginRepositories>
 
+	<distributionManagement>
+		<repository>
+			<id>pvtxx.repo</id>
+			<name>PVTXX repo</name>
+			<url>git@github.com:lios8924/PVT.git</url>
+		</repository>
+	</distributionManagement>
 
 
 
