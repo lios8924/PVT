@@ -58,7 +58,6 @@
 			<artifactId>jackson-core</artifactId>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<extensions>
 			<extension>
@@ -75,6 +74,14 @@
 		</plugins>
 
 	</build>
+   <pluginRepositories>
+	   <pluginRepository>
+		   <id>synergian-repo</id>
+		   <url>https://github.com/lios8924/PVT.git</url>
+	   </pluginRepository>
+
+   </pluginRepositories>
+
 
 
 
