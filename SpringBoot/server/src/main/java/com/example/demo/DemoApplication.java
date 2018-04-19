@@ -10,7 +10,7 @@ public class DemoApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
-		System.out.println("hej");
+		System.out.println("hello");
 	}
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
