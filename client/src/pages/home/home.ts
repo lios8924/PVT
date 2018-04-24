@@ -1,9 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
-import { ConfigProvider, Config } from '../../providers/config/config';
+import { ConfigProvider } from '../../providers/config/config';
 
 declare var google: any;
 
@@ -13,35 +13,33 @@ declare var google: any;
 })
 export class HomePage {
 
-  config: Config = { database: null };
+  config: any = { database: null, lampIcon: null };
   map: any;
   positionMarker: any;
+  lampMarkers = [];
   @ViewChild('map') mapElement: ElementRef;
 
-  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider) {
-    this.showConfig();
-    this.initMap();
+  tempLocation: any;
+
+  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform) {
+    platform.ready().then(() => {
+      this.showConfig();
+      this.initLamps();
+      this.initMap();
+    });
   }
 
   showConfig() {
-    this.configProvider.getConfig().subscribe(resp => {
-      this.config = resp;
-      console.log(this.config);
+    this.configProvider.getConfig().then(data => {
+      this.config = data;
+      this.updateLampIcons();
     });
-
-    /*
-    this.configProvider.getConfig().subscribe(resp => {
-      this.config = resp;
-      console.log(this.config);
-    }, err => {
-      console.error(err);
-    });
-    */
   }
 
   initMap() {
     this.geo.getCurrentPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).then(resp => {
       let myLocation = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      
       this.map = new google.maps.Map(this.mapElement.nativeElement, {
         zoom: 15,
         center: myLocation
@@ -51,8 +49,40 @@ export class HomePage {
         position: myLocation,
         map: this.map
       });
+
+      this.setLampMarkers(this.map);
+
     }, err => {
       console.error("Error getting location:", err);
     })
+  }
+
+  initLamps() {
+    //Wow! big database
+	//location for Stockholm
+    let locations = [new google.maps.LatLng(59.3293, 18.0686)];
+    
+    for (let i in locations) {
+      this.addLampMarker(locations[i]);
+    }
+  }
+
+  addLampMarker(location) {
+    this.lampMarkers.push(new google.maps.Marker({
+      position: location,
+      icon: this.config.lampIcon
+    }));
+  }
+
+  setLampMarkers(map) {
+    for (let i in this.lampMarkers) {
+      this.lampMarkers[i].setMap(map);
+    }
+  }
+
+  updateLampIcons() {
+    for (let i in this.lampMarkers) {
+      this.lampMarkers[i].icon = this.config.lampIcon;
+    }
   }
 }
