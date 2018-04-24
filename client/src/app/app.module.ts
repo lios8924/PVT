@@ -9,11 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
 import { ConfigProvider } from '../providers/config/config';
+
 
 @NgModule({
   declarations: [
     MyApp,
+    LoginPage,
     HomePage
   ],
   imports: [
@@ -24,6 +27,7 @@ import { ConfigProvider } from '../providers/config/config';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    LoginPage,
     HomePage
   ],
   providers: [
