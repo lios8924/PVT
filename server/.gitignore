@@ -3,7 +3,6 @@
 ### Maven ###
 target/
 dependency-reduced-pom.xml
-buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !.mvn/wrapper/maven-wrapper.jar
@@ -16,54 +15,34 @@ build/
 # Ignore Gradle GUI config
 gradle-app.setting
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
 # Cache of project
 .gradletasknamecache
 
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
 
 
-### STS & Eclipse ###
-.metadata/
-.recommenders/
-.settings/
-bin/
-tmp/
+### STS ###
 .apt_generated
 .classpath
 .factorypath
 .project
+.settings
 .springBeans
 .sts4-cache
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.loadpath
 
 
 ### IntelliJ IDEA ###
-out/
-.idea/
+.idea
 *.iws
 *.iml
 *.ipr
 *.target
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
 
 ### NetBeans ###
-nbbuild/
-dist/
-nbdist/
-nbproject/private/
-.nb-gradle/
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
