@@ -1,4 +1,4 @@
-package com.example.demo;
+package dsv.pvt2018;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
