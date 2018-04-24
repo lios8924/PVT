@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example</groupId>
-	<artifactId>demo-server</artifactId>
+	<groupId>dsv.pvt2018</groupId>
+	<artifactId>CaptureTheLamp-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>CaptureTheLamp</name>
+	<description>PVT Project at DSV</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

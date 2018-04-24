@@ -1,4 +1,4 @@
-package com.example.demo;
+package dsv.pvt2018;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

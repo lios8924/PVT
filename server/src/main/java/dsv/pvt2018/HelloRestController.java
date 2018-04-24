@@ -1,4 +1,4 @@
-package com.example.demo;
+package dsv.pvt2018;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
