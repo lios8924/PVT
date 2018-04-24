@@ -25683,3 +25683,16 @@ ion-navbar.toolbar {
   height: 100%;
   background-color: black;
 }
+
+page-login .scroll-content {
+  background-color: black;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+page-login .button {
+  color: black;
+}
