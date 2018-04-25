@@ -1,4 +1,4 @@
-package dsv.pvt2018;
+package dsv.pvt2018.user;
 
 import org.springframework.data.repository.CrudRepository;
 
