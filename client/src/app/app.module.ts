@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 import { ConfigProvider } from '../providers/config/config';
 
 
@@ -17,6 +18,7 @@ import { ConfigProvider } from '../providers/config/config';
   declarations: [
     MyApp,
     LoginPage,
+    SignupPage,
     HomePage
   ],
   imports: [
@@ -28,6 +30,7 @@ import { ConfigProvider } from '../providers/config/config';
   entryComponents: [
     MyApp,
     LoginPage,
+    SignupPage,
     HomePage
   ],
   providers: [
