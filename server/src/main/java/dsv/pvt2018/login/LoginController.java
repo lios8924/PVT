@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:8100", "file://"})
+@CrossOrigin(origins = {"http://localhost:8100", "file://"}) //krävs för kommunikation med ionic
 public class LoginController {
 
     @Autowired
