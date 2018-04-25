@@ -5,6 +5,8 @@ import {SignupPage} from '../signup/signup';
 import {HomePage} from '../home/home';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import {ElementRef, ViewChild} from '@angular/core';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -24,6 +26,8 @@ export class LoginPage {
   //let API = 'http://localhost:8080/login?';
   API: any;
   data: any;
+  username: any;
+  password: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
 
@@ -38,17 +42,22 @@ export class LoginPage {
   }
 
   login(){
-    this.API = 'http://localhost:8080/login?'
-    let username = this.userinputname;
-    let password = this.userinputpassword;
+    this.API = 'http://localhost:8080/login'
 
-    let user = 'username=' + username + '&' + 'password=' + password;
+    //username = this.userinputname;
+    //password = this.userinputpassword;
+
+    this.username = (<HTMLInputElement>document.getElementById('nameinput')).value;
+    this.password = (<HTMLInputElement>document.getElementById('passinput')).value;
+
+
+    let user = '?username=' + this.username + '&' + 'password=' + this.password;
 
     let adress = this.API + user;
 
     console.log(adress);
 
-    this.http.post(adress).map(res => res.json()).subscribe(
+    this.http.get(this.API).subscribe(
       data => {
         this.data = data;
         console.log(this.data);
@@ -58,7 +67,7 @@ export class LoginPage {
       }
     );
 
-    console.log('login pressed', username, password);
+    console.log('login pressed', this.username, this.password);
     this.navCtrl.push(HomePage);
 
   }
