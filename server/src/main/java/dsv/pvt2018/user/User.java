@@ -1,4 +1,4 @@
-package dsv.pvt2018;
+package dsv.pvt2018.user;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
