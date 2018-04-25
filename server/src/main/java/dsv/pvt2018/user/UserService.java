@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,18 +13,10 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	private List<User> users = Arrays.asList(
-			new User("Erik", "asd@asdasd.com"),
-			new User("Maja", "asd@sppp.com"),
-			new User("Mats", "asd@asd.com")
-			);
-	
-	public Optional<User> findUserById(Integer ID){
-		return userRepository.findById(ID);
+	public Optional<User> findUserById(String username){
+		return userRepository.findById(username);
 	}
 	
-	
-	//bara för test
 	public List<User> getAllUsers(){
 		List<User> users = new ArrayList<>();
 		userRepository.findAll().forEach(users::add);
@@ -33,13 +24,21 @@ public class UserService {
 	}
 	
 	//Behöver den här returnera något? Vilka kontroller ska göras i klienten och vilka här?
+	public void registerUser(String username, String email){
+		User user = new User(username, email);
+		addUser(user);
+	}
+	
 	public void registerUser(User user){
-		//kolla att den inte redan finns.
 		addUser(user);
 	}
 	
 	private void addUser(User user){
 		userRepository.save(user);
+	}
+
+	public void deleteUser(String username) {
+		userRepository.deleteById(username);
 	}
 	
 }
