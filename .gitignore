@@ -1,4 +1,6 @@
+#
 # Reference: https://github.com/github/gitignore
+#
 
 ### Java ###
 # Compiled class file
@@ -20,11 +22,12 @@
 hs_err_pid*
 
 
-### JetBrains ###
-.idea/
-
 ### Gradle ###
 .gradle/
+
+
+### JetBrains ###
+.idea/
 
 
 ### OS-specific ###
