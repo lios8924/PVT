@@ -4,6 +4,7 @@ import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { ConfigProvider } from '../../providers/config/config';
+import { LampProvider } from '../../providers/lamp/lamp';
 
 declare var google: any;
 
@@ -21,7 +22,7 @@ export class HomePage {
 
   tempLocation: any;
 
-  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform) {
+  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform, public lampDb: LampProvider) {
     platform.ready().then(() => {
       this.showConfig();
       this.initLamps();
@@ -58,13 +59,11 @@ export class HomePage {
   }
 
   initLamps() {
-    //Wow! big database
-	//location for Stockholm
-    let locations = [new google.maps.LatLng(59.3293, 18.0686)];
-    
-    for (let i in locations) {
-      this.addLampMarker(locations[i]);
-    }
+    this.lampDb.getLamps().then(data => {
+      for (let i in data) {
+        this.addLampMarker(data[i].LatLng);
+      }
+    });
   }
 
   addLampMarker(location) {
