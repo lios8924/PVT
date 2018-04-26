@@ -1,4 +1,4 @@
-package dsv.pvt2018;
+/*package dsv.pvt2018;
 
 import dsv.pvt2018.user.User;
 import dsv.pvt2018.user.UserRepository;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+*//*
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
 public class MainController {
@@ -35,3 +35,4 @@ public class MainController {
         return userRepository.findAll();
     }
 }
+*/
