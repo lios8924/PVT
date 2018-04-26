@@ -11,6 +11,7 @@ public class User {
 //    @GeneratedValue(strategy=GenerationType.AUTO)
 //    private Integer id;
 
+	//använt userName som ID så länge.
 	@Id
 	private String userName;
 

@@ -63,13 +63,6 @@
 			<artifactId>jackson-core</artifactId>
 		</dependency>
 
-		<!-- den nedan tas bort sedan, när en riktigt databas finns. -->
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
 	</dependencies>
 
 	<build>
