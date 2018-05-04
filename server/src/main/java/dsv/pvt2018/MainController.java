@@ -22,7 +22,7 @@ public class MainController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        User n = new User();
+        MockUser n = new MockUser();
         n.setName(name);
         n.setEmail(email);
         userRepository.save(n);
@@ -30,7 +30,7 @@ public class MainController {
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers() {
+    public @ResponseBody Iterable<MockUser> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }

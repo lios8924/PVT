@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {SignupPage} from '../signup/signup';
-import {HomePage} from '../home/home';
+import { SignupPage } from '../signup/signup';
+import { HomePage } from '../home/home';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {ElementRef, ViewChild} from '@angular/core';
+import { ElementRef, ViewChild } from '@angular/core';
+import { Headers, URLSearchParams } from '@angular/http';
 
 /**
  * Generated class for the LoginPage page.
@@ -26,8 +27,8 @@ export class LoginPage {
   //let API = 'http://localhost:8080/login?';
   API: any;
   data: any;
-  username: any;
-  password: any;
+  usernameinput: string;
+  passwordinput: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
 
@@ -41,17 +42,37 @@ export class LoginPage {
     this.navCtrl.push(SignupPage)
   }
 
+  loginPost(){
+      this.API = 'http://localhost:8080/login'
+      var headers = new Headers({'Content-Type': 'application/json'});
+      //headers.append('Content-Type', 'application/json');
+
+      let searchParams = new URLSearchParams();
+      searchParams.append('username', this.usernameinput);
+      searchParams.append('password', this.passwordinput);
+      let body = searchParams.toString();
+
+/*
+      var body = JSON.stringify({
+          username: this.usernameinput,
+          password: this.passwordinput
+      });
+*/
+      this.http.post(this.API, body, { headers: this.headers }).map(data => data.json()).subscribe(
+            data => {
+                console.log(data);
+            },
+            err => {
+                console.log('helvete');
+            }
+        );
+
+  }
+
   login(){
     this.API = 'http://localhost:8080/login'
 
-    //username = this.userinputname;
-    //password = this.userinputpassword;
-
-    this.username = (<HTMLInputElement>document.getElementById('nameinput')).value;
-    this.password = (<HTMLInputElement>document.getElementById('passinput')).value;
-
-
-    let user = '?username=' + this.username + '&' + 'password=' + this.password;
+    let user = '?username=' + this.usernameinput + '&' + 'password=' + this.passwordinput;
 
     let adress = this.API + user;
 
@@ -67,7 +88,7 @@ export class LoginPage {
       }
     );
 
-    console.log('login pressed', this.username, this.password);
+    console.log('login pressed', this.usernameinput, this.passwordinput);
     this.navCtrl.push(HomePage);
 
   }

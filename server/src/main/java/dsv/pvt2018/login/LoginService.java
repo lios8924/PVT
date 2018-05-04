@@ -9,26 +9,30 @@ import java.util.List;
 @Service
 public class LoginService {
 
-    private List<User> users = new ArrayList<>(Arrays.asList(
-            new User(1, "User1", "user1@test.com", "1234567890"),
-            new User(1, "User2", "user2@test.com", "abcdefghij"),
-            new User(1, "User4", "user3@test.com", "12345abcde")
+    private List<MockUser> users = new ArrayList<>(Arrays.asList(
+            new MockUser("User1", "1234567890"),
+            new MockUser("User2", "abcdefghij"),
+            new MockUser("User4", "12345abcde")
     ));
 
-    public List<User> getUsers(){
+    public List<MockUser> getUsers(){
         return users;
     }
 
-    private User findUser(String username){
-        for(User u : users){
+    public boolean addUser(MockUser user){
+        return users.add(user);
+    }
+
+    private MockUser findUser(String username){
+        for(MockUser u : users){
             if(u.getUsername().equals(username))
                 return u;
         }
         return null;
     }
 
-    public User validateUser(String username, String password){
-        User user = findUser(username);
+    public MockUser validateUser(String username, String password){
+        MockUser user = findUser(username);
         if(user != null && user.getPassword().equals(password)){
             return user;
         }
