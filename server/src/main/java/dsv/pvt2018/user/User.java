@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 @Table(name = "users")
 public class User {
 //    @Id

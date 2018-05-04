@@ -13,12 +13,14 @@ public class Lamp {
 	private int id;
 	
 	@NotNull
-	private float lat;
+	private double lat;
 	
 	@NotNull
-	private float lng;
+	private double lng;
 	
-	public Lamp(int id, float lat, float lng) {
+	public Lamp(){}
+	
+	public Lamp(int id, double lat, double lng) {
 		this.id = id;
 		this.lat = lat;
 		this.lng = lng;
@@ -29,16 +31,16 @@ public class Lamp {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public float getLat() {
+	public double getLat() {
 		return lat;
 	}
-	public void setLat(float lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
 	}
-	public float getLng() {
+	public double getLng() {
 		return lng;
 	}
-	public void setLng(float lng) {
+	public void setLng(double lng) {
 		this.lng = lng;
 	}
 	
