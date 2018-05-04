@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ConfigProvider } from '../providers/config/config';
+import { LampProvider } from '../providers/lamp/lamp';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ConfigProvider } from '../providers/config/config';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     Geolocation,
-    ConfigProvider
+    ConfigProvider,
+    LampProvider
   ]
 })
 export class AppModule {}

@@ -7,33 +7,29 @@ declare var google: any;
 export class ConfigProvider {
 
   configUrl = "assets/config.json";
+  configPromise: Promise<{}>;
+  config;
 
   constructor(public http: HttpClient) {  }
-  
-  getConfig() {
-    return new Promise((resolve, reject) => {
+
+  async getConfig() {
+    if (this.configPromise != null) {
+      await this.configPromise;
+      return new Promise((r, reject) => { r(this.config)})
+    }
+
+    this.configPromise = new Promise((resolve, reject) => {
       this.http.get(this.configUrl).subscribe(resp => {
-        var config: Config = {
-          database: resp["database"],
-          lampIcon: {
-            url: resp["lampIcon"]["url"],
-            scaledSize: new google.maps.Size(resp["lampIcon"]["size"], resp["lampIcon"]["size"])
-          }
-        }
+        this.config = resp;
+        this.config["lampIcon"].scaledSize = new google.maps.Size(this.config["lampIcon"]["scaledSize"], this.config["lampIcon"]["scaledSize"]);
 
         //return config data
-        resolve(config);
+        resolve(this.config);
       }, err => {
         reject(err);
       });
     });
-  }
-}
 
-export interface Config {
-  database: string;
-  lampIcon: {
-    url: string,
-    scaledSize: any
-  };
+    return this.configPromise;
+  }
 }

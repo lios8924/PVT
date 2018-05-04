@@ -1,7 +1,7 @@
 {
-  "database": "https://jsonplaceholder.typicode.com/users",
   "lampIcon": {
     "url": "assets/imgs/Light-Bulb.png",
-    "size": 16
-  }
+    "scaledSize": 32
+  },
+  "lampDatabaseLocation": "assets/lamps.json"
 }
