@@ -20,12 +20,12 @@ public class UserController {
 	private UserService userService;
 	
 	//tveksamt om denna ska finnas sen, iaf som public
-	@RequestMapping("/")
+	@RequestMapping("/users")
 	public List<User> getAllUser(){
 		return userService.getAllUsers();
 	}
 	
-	@RequestMapping("users/users/{username}")
+	@RequestMapping("users/{username}")
 	public Optional<User> getUser(@PathVariable String username){
 		return userService.findUserById(username);
 	}

@@ -4,24 +4,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity // This tells Hibernate to make a table out of this class
+@Table(name = "users")
 public class User {
 //    @Id
 //    @GeneratedValue(strategy=GenerationType.AUTO)
 //    private Integer id;
 
+	//Se till att de inte kan vara null sen.
 	//använt userName som ID så länge.
 	@Id
 	private String userName;
 
+	@NotNull
     private String email;
+    
+	@NotNull
+    private String password;
 
     public User(){}
     
-    public User(String userName, String email) {
+    public User(String userName, String email, String password) {
 		this.userName = userName;
 		this.email = email;
+		this.password = password;
 	}
     
 //    public Integer getId() {
@@ -46,6 +55,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public void setPassword(String password){
+    	this.password = password;
+    }
+    
+    public String getPassword(){
+    	return password;
     }
 
 
