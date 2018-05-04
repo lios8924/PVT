@@ -4,6 +4,7 @@ import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { ConfigProvider } from '../../providers/config/config';
+import { LampProvider } from '../../providers/lamp/lamp';
 
 declare var google: any;
 
@@ -13,7 +14,7 @@ declare var google: any;
 })
 export class HomePage {
 
-  config: any = { database: null, lampIcon: null };
+  config: any = { lampIcon: null };
   map: any;
   positionMarker: any;
   lampMarkers = [];
@@ -21,7 +22,7 @@ export class HomePage {
 
   tempLocation: any;
 
-  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform) {
+  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform, public lampProvider: LampProvider) {
     platform.ready().then(() => {
       this.showConfig();
       this.initLamps();
@@ -39,7 +40,7 @@ export class HomePage {
   initMap() {
     this.geo.getCurrentPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).then(resp => {
       let myLocation = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-      
+
       this.map = new google.maps.Map(this.mapElement.nativeElement, {
         zoom: 15,
         center: myLocation
@@ -47,29 +48,36 @@ export class HomePage {
 
       this.positionMarker = new google.maps.Marker({
         position: myLocation,
-        map: this.map
+        map: this.map,
+        icon: this.config.icon
       });
 
       this.setLampMarkers(this.map);
 
     }, err => {
       console.error("Error getting location:", err);
-    })
+    });
+
+    this.geo.watchPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).subscribe(resp => {
+      let myLocation = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      this.positionMarker.setPosition(myLocation);
+    });
+
   }
 
   initLamps() {
-    //Wow! big database
-	//location for Stockholm
-    let locations = [new google.maps.LatLng(59.3293, 18.0686)];
-    
-    for (let i in locations) {
-      this.addLampMarker(locations[i]);
-    }
+    this.lampProvider.getLamps().then(locations => {
+      for (let i in locations) {
+        this.addLampMarker(locations[i].LatLng);
+      }
+    });
+    this.setLampMarkers(this.map);
   }
 
   addLampMarker(location) {
     this.lampMarkers.push(new google.maps.Marker({
       position: location,
+      map: this.map,
       icon: this.config.lampIcon
     }));
   }
