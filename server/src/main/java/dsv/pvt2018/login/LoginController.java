@@ -1,5 +1,6 @@
 package dsv.pvt2018.login;
 
+import dsv.pvt2018.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
