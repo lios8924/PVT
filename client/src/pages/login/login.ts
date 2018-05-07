@@ -39,7 +39,7 @@ export class LoginPage {
   }
 
   signup(){
-    this.navCtrl.push(SignupPage)
+    this.navCtrl.push(SignupPage);
   }
 
   loginPost(){
@@ -92,6 +92,7 @@ export class LoginPage {
 
   }
 
+//DENNA SKIT SKA BORT MEN LÅTER DEN STÅ KVAR SÅ LÄNGE BARA!
   login(){
     this.API = 'http://localhost:8080/login'
 
