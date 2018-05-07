@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { ElementRef, ViewChild } from '@angular/core';
-import { Headers, URLSearchParams } from '@angular/http';
+import { URLSearchParams, RequestOptions } from '@angular/http';
 
 /**
  * Generated class for the LoginPage page.
@@ -43,24 +43,47 @@ export class LoginPage {
   }
 
   loginPost(){
-      this.API = 'http://localhost:8080/login'
-      var headers = new Headers({'Content-Type': 'application/json'});
+      this.API = 'http://localhost:8080/login';
+      //var headers = new Headers({'Content-Type': 'application/json'});
       //headers.append('Content-Type', 'application/json');
-
+/*
       let searchParams = new URLSearchParams();
       searchParams.append('username', this.usernameinput);
       searchParams.append('password', this.passwordinput);
       let body = searchParams.toString();
+*/
+    var headers = new HttpHeaders();
+    headers = headers.set("Accept", 'application/json');
+    headers = headers.set('Content-Type', 'application/json' );
+    //let options = new RequestOptions({ headers: headers });
 
+    /*let postParams = {
+        username: this.usernameinput,
+        password: this.passwordinput
+    };*/
 /*
+    this.http.post("http://jsonplaceholder.typicode.com/posts", postParams, options)
+        .subscribe(data => {
+            console.log(data['_body']);
+        }, error => {
+            console.log(error);// Error getting the data
+     });
+*/
+
       var body = JSON.stringify({
           username: this.usernameinput,
           password: this.passwordinput
       });
-*/
-      this.http.post(this.API, body, { headers: this.headers }).map(data => data.json()).subscribe(
+
+      console.log(this.API, body, headers);
+
+      this.http.post(this.API, body, { headers: headers }).map(data => data).subscribe(
             data => {
                 console.log(data);
+                if(data == 0)
+                    this.navCtrl.push(HomePage);
+                else
+                    console.log(data , "No existing user");
             },
             err => {
                 console.log('helvete');

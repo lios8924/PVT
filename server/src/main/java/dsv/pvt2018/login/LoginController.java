@@ -19,13 +19,17 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public String verifyLogin(@RequestBody MockUser user){
+    public int verifyLogin(@RequestBody MockUser user) {
+        System.err.println("Något fucking händer här iaf!");
+        System.out.println(user);
 
+        MockUser foundUser = loginService.validateUser(user.getUsername(), user.getPassword());
+        if (foundUser != null) {
+            return 0;
+        }
 
-
-        return null;
+         return 1;
     }
-
 
     /*@RequestMapping(method = RequestMethod.POST, value = "/login")
     public String verifyLogin(@RequestParam String username, @RequestParam String password){

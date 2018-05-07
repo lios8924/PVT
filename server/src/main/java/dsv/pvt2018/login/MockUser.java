@@ -11,6 +11,8 @@ public class MockUser {
     private String username;
     private String password;
 
+    public MockUser(){}
+
     public MockUser(String username, String password){
         //this.id = id;
         this.username = username;
@@ -39,6 +41,10 @@ public class MockUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String toString(){
+        return "Username: " + username + " - Password: " + password;
     }
 }
 
