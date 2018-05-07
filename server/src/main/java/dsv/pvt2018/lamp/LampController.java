@@ -16,7 +16,4 @@ public class LampController {
 	public List<Lamp> getAllLamps(){
 		return lampService.getAllLamps();
 	}
-	
-	
-	
 }
