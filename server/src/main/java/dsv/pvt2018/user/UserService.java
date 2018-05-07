@@ -23,20 +23,11 @@ public class UserService {
 		return users;
 	}
 	
-	//Behöver den här returnera något? Vilka kontroller ska göras i klienten och vilka här?
 	public void registerUser(String username, String password, String email){
-		User user = new User(username, email);
-		addUser(user);
-		//gör något med password
-	}
-	
-	public void registerUser(User user){
-		addUser(user);
-	}
-	
-	private void addUser(User user){
+		User user = new User(username, email, password);
 		userRepository.save(user);
 	}
+
 
 	public void deleteUser(String username) {
 		userRepository.deleteById(username);
