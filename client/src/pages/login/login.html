@@ -5,8 +5,6 @@
   Ionic pages and navigation.
 -->
 
-
-
 <ion-content class="background">
 
   <ion-row>
@@ -14,7 +12,6 @@
         <ion-img width="110" height="110"  src="assets/imgs/Light-Bulb.png"></ion-img>
       </ion-col>
     </ion-row>
-
     <ion-card>
       <ion-card-header>
         Capture The Lamp
@@ -22,10 +19,10 @@
       <ion-card-content>
         <ion-list no-line>
           <ion-item>
-            <ion-input id="nameinput" type="text" placeholder="Username" [(ngModel)]="userinputname"></ion-input>
+            <ion-input type="text" placeholder="Username" [(ngModel)]="usernameinput"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input id="passinput" type="text" placeholder="Password" [(ngModel)]="userinputpassword"></ion-input>
+            <ion-input type="text" placeholder="Password" [(ngModel)]="passwordinput"></ion-input>
           </ion-item>
           <button ion-button block outline color (click)="login()">Log in</button>
           <p>OR</p>
