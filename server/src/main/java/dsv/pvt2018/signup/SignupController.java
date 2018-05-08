@@ -17,7 +17,7 @@ public class SignupController {
     @RequestMapping(method = RequestMethod.POST, value = "/signup")
     public int signupUser(@RequestBody MockUser user){
 
-        MockUser foundUser = loginService.validateUser(user.getUsername(), user.getPassword());
+        MockUser foundUser = loginService.validateUserByName(user.getUsername());
 
         //No existing user, return ok
         if(foundUser == null){

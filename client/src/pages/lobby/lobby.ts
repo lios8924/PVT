@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import {HomePage} from '../home/home';
 
 /**
  * Generated class for the LobbyPage page.
@@ -12,28 +12,33 @@ import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-lobby',
-  templateUrl: 'lobby.html',
+    selector: 'page-lobby',
+    templateUrl: 'lobby.html',
 })
 export class LobbyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LobbyPage');
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-  redteam(){
-    this.navCtrl.push(HomePage);
-  }
+    }
 
-  blueteam(){
-    this.navCtrl.push(HomePage);
-  }
+    ionViewDidLoad() {
+        let hello = localStorage.getItem('username');
+        console.log('hello ', hello);
+        console.log('ionViewDidLoad LobbyPage');
+    }
 
-  signout(){
-    this.navCtrl.pop();
-  }
+    redteam() {
+        this.navCtrl.push(HomePage);
+    }
+
+    blueteam() {
+        this.navCtrl.push(HomePage);
+    }
+
+    signout() {
+        localStorage.clear();
+        this.navCtrl.pop();
+    }
 
 }

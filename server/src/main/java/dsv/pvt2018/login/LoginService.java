@@ -31,6 +31,10 @@ public class LoginService {
         return null;
     }
 
+    public MockUser validateUserByName(String username){
+        return findUser(username);
+    }
+
     public MockUser validateUser(String username, String password){
         MockUser user = findUser(username);
         if(user != null && user.getPassword().equals(password)){
