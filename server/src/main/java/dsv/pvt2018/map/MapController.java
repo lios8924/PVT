@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dsv.pvt2018.lamp.Lamp;
+
 @RestController
 public class MapController {
 	
@@ -17,13 +19,18 @@ public class MapController {
 	private MapService mapService;
 	
 	@RequestMapping
-	public List<Map> getAllMaps(){
+	public List<MapCTF> getAllMaps(){
 		return mapService.getAllMaps();
 	}
 	
 	@RequestMapping("maps/{id}")
-	public Optional<Map> getMap(@PathVariable int id){
+	public Optional<MapCTF> getMap(@PathVariable int id){
 		return mapService.findMapById(id);
+	}
+	
+	@RequestMapping("maps/{id}/lamps")
+	public List<Lamp> getLampsForMaps(@PathVariable int id){
+		return mapService.getLampsForMap(id);		
 	}
 	
 	//För att spela en map, sätter maps variabel occupied.

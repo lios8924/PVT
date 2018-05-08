@@ -24,8 +24,8 @@ public class UserService {
 	}
 	
 	//Behöver den här returnera något? Vilka kontroller ska göras i klienten och vilka här?
-	public void registerUser(String username, String password, String email){
-		User user = new User(username, email, password);
+	public void registerUser(String username, String password){
+		User user = new User(username, password);
 		addUser(user);
 		//gör något med password
 	}

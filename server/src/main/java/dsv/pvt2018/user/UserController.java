@@ -37,8 +37,8 @@ public class UserController {
 	//Ett sätt att ta emot det som behövs, vet inte om det är ok säkerhetsmässigt.
     @RequestMapping(method = RequestMethod.POST, value = "/registerUser")
     public void registerUser(@RequestParam String username, 
-    		@RequestParam String password, @RequestParam String email){
-        userService.registerUser(username, password, email);
+    		@RequestParam String password){
+        userService.registerUser(username, password);
     }
     
 //	@RequestMapping(method=RequestMethod.POST, value="/registerUser")

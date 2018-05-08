@@ -20,8 +20,8 @@ public class LampService {
 	}
 	
 	//Ta bort sen
-	public void addLamp(int id, double lat, double lng){
-		Lamp lamp = new Lamp(id, lat, lng);
+	public void addLamp(int id, double lat, double lng, int mapId){
+		Lamp lamp = new Lamp(id, lat, lng, mapId);
 		lampRepo.save(lamp);
 	}
 	
