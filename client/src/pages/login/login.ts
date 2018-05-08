@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
+import { LobbyPage } from '../lobby/lobby';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { ElementRef, ViewChild } from '@angular/core';
@@ -30,7 +31,7 @@ export class LoginPage {
   usernameinput: string;
   passwordinput: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public alertCtrl: AlertController) {
 
   }
 
@@ -81,9 +82,19 @@ export class LoginPage {
             data => {
                 console.log(data);
                 if(data == 0)
-                    this.navCtrl.push(HomePage);
-                else
+                    this.navCtrl.push(LobbyPage);
+                else{
+
+
+                  let alert = this.alertCtrl.create({
+                    title: 'No existing user',
+                    buttons: ['Dismiss']
+                  });
+                    alert.present();
+
+
                     console.log(data , "No existing user");
+                  }
             },
             err => {
                 console.log('helvete');
@@ -113,7 +124,7 @@ export class LoginPage {
     );
 
     console.log('login pressed', this.usernameinput, this.passwordinput);
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(LobbyPage);
 
   }
 
