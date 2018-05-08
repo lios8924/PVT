@@ -20,9 +20,17 @@ public class LampService {
 	}
 	
 	//Ta bort sen
-	public void addLamp(int id, double lat, double lng, int mapId){
-		Lamp lamp = new Lamp(id, lat, lng, mapId);
+	public void addLamp(Integer id, double lat, double lng){
+		Lamp lamp = new Lamp(lat, lng);
 		lampRepo.save(lamp);
+	}
+	
+	public void addLamp(Lamp lamp){
+		lampRepo.save(lamp);
+	}
+
+	public List<Lamp> getLampsByMapId(Integer mapId) {
+		return lampRepo.findByMapId(mapId);
 	}
 	
 }

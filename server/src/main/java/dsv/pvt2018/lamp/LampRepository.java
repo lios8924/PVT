@@ -1,7 +1,10 @@
 package dsv.pvt2018.lamp;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
-public interface LampRepository extends CrudRepository<Lamp, Integer> {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+public interface LampRepository extends JpaRepository<Lamp, Integer> {
+//	Page<Lamp> findByMapId(Integer mapId, Pageable pageable);
+	List<Lamp> findByMapId(Integer mapId);
 }

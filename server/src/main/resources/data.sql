@@ -1,5 +1,13 @@
-INSERT INTO lamps (id, lat, lng, mapId) VALUES
-  (1, 59.407979, 17.945867, 1),
-  (2, 59.406722, 17.942627, 1),
-  (3, 59.410099, 17.941377, 2),
-  (4, 59.407732, 17.947039, 2);
+INSERT INTO maps (name, occupied) VALUES
+  ("Map 1", false),
+  ("Map 2", false),
+  ("Map 3", false),
+  ("Map 4", false);
+
+INSERT INTO lamps (lat, lng, map_id) VALUES
+  (59.407979, 17.945867, 1),
+  (59.406722, 17.942627, 1),
+  (59.410099, 17.941377, 2),
+  (59.407732, 17.947039, 3);
+  
+
