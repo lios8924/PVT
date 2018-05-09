@@ -1,0 +1,66 @@
+page-lobby {
+
+  .background{
+    div {
+      animation: colorchange 50s;
+      -webkit-animation: colorchange 50s;
+}
+
+
+/* Chrome and Safari */
+ @-webkit-keyframes colorchange
+ {
+  0%   {background: red;}
+  25%  {background: yellow;}
+  50%  {background: blue;}
+  75%  {background: green;}
+  100% {background: red;}
+}
+
+/* Standard syntax */
+@keyframes colorchange {
+  0%   {background: red;}
+  25%  {background: yellow;}
+  50%  {background: blue;}
+  75%  {background: green;}
+  100% {background: red;}
+}
+  }
+
+  .button1 {
+
+    position: absolute;
+     bottom: 10px;
+     width: 100%;
+     border: 1px solid black;
+  }
+
+  .button2 {
+
+    position: absolute;
+    left: 200px;
+    top: 250px;
+
+  }
+
+  .button3 {
+
+  background-color: red;
+
+  position: absolute;
+  right: 200px;
+  top: 250px;
+
+
+  }
+
+  @keyframes move {
+  from { top: 0; left: 0; }
+  to   { top: 100px; left: 100px; }
+}
+
+.move {
+  animation: move 10s steps(10) infinite alternate;
+}
+
+}

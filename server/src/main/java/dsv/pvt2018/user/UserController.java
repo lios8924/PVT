@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 @RestController
 public class UserController {
 
@@ -37,14 +35,8 @@ public class UserController {
 	
 	//Ett sätt att ta emot det som behövs, vet inte om det är ok säkerhetsmässigt.
     @RequestMapping(method = RequestMethod.POST, value = "/registerUser")
-    public void registerUser(@RequestParam String username, 
+    	public void registerUser(@RequestParam String username, 
     		@RequestParam String password, @RequestParam String email){
         userService.registerUser(username, password, email);
     }
-    
-//	@RequestMapping(method=RequestMethod.POST, value="/registerUser")
-//	public void registerUser(@RequestBody User user){
-//		userService.registerUser(user);
-//	}
-    
 }
