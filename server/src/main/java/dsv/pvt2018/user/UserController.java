@@ -3,12 +3,18 @@ package dsv.pvt2018.user;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import dsv.pvt2018.map.MapCTF;
 
 
 
@@ -34,12 +40,18 @@ public class UserController {
 		userService.deleteUser(username);
 	}
 	
-	//Ett sätt att ta emot det som behövs, vet inte om det är ok säkerhetsmässigt.
+	//för att registrera mha av värden från url:en
     @RequestMapping(method = RequestMethod.POST, value = "/registerUser")
     public void registerUser(@RequestParam String username, 
     		@RequestParam String password){
         userService.registerUser(username, password);
     }
+    
+    //för att registera mha jasonobjekt
+    @PostMapping("/addUser")
+	public User addUser(@Valid @RequestBody User user){
+		return userService.addUser(user);
+	}
     
 //	@RequestMapping(method=RequestMethod.POST, value="/registerUser")
 //	public void registerUser(@RequestBody User user){

@@ -41,31 +41,9 @@ public class MapController {
 	@PutMapping("/maps/{id}")
 	public void occupyMap(@RequestParam boolean occupy, @PathVariable Integer id){
 		if(!mapService.setMapAsOccupied(occupy, id)){
-			//kasta undantag  new ResourceNotFoundExcption("MapId " + id + " not found"));
+			//kasta undantag  new ResourceNotFoundException("MapId " + id + " not found"));
 		}
 	}
-	
-//	@RequestMapping
-//	public List<MapCTF> getAllMaps(){
-//		return mapService.getAllMaps();
-//	}
-//	
-//	@RequestMapping("maps/{id}")
-//	public Optional<MapCTF> getMap(@PathVariable Integer id){
-//		return mapService.findMapById(id);
-//	}
-//	
-////	@RequestMapping("maps/{id}/lamps")
-////	public List<Lamp> getLampsForMaps(@PathVariable int id){
-////		return mapService.getLampsForMap(id);		
-////	}
-//	
-//	//För att spela en map, sätter maps variabel occupied.
-//    @RequestMapping(method = RequestMethod.PUT, value = "/maps/{id}")
-//    public void occupyMap(@RequestParam boolean occupy, @PathVariable Integer id){
-//        mapService.setMapAsOccupied(occupy, id);
-//    }
-	
     
     
 }

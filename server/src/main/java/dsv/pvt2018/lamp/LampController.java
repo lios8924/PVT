@@ -15,9 +15,6 @@ public class LampController {
 	@Autowired
 	private LampService lampService;
 	
-//	@Autowired
-//	private MapService mapService;
-	
 	@GetMapping("/lamps")
 	public List<Lamp> getAllLamps(){
 		return lampService.getAllLamps();
