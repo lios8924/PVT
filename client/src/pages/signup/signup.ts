@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {LoginPage} from '../login/login';
 
 import 'rxjs/add/operator/map';
@@ -28,7 +28,7 @@ export class SignupPage {
     usernameinput: string;
     passwordinput: string;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public alertCtrl: AlertController) {
 
     }
 
@@ -61,6 +61,11 @@ export class SignupPage {
                       this.navCtrl.pop();
                   }
                   else{
+                      let alert = this.alertCtrl.create({
+                          title: 'User with that name already exist!',
+                          buttons: ['Dismiss']
+                      });
+                      alert.present();
                       console.log(data , "User already exist!");
                   }
               },
