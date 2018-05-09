@@ -53,9 +53,5 @@ public class UserController {
 		return userService.addUser(user);
 	}
     
-//	@RequestMapping(method=RequestMethod.POST, value="/registerUser")
-//	public void registerUser(@RequestBody User user){
-//		userService.registerUser(user);
-//	}
     
 }
