@@ -22,6 +22,21 @@ export class HomePage {
 
   tempLocation: any;
 
+  styles = {
+    default: null,
+    hide: [
+      {
+        featureType: 'poi.business',
+        stylers: [{ visibility: 'off' }]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'labels.icon',
+        stylers: [{ visibility: 'off' }]
+      }
+    ]
+  };
+
   constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform, public lampProvider: LampProvider) {
     platform.ready().then(() => {
       this.showConfig();
@@ -38,12 +53,14 @@ export class HomePage {
   }
 
   initMap() {
-    this.geo.getCurrentPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).then(resp => {
+    this.geo.getCurrentPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).then((resp) => {
       let myLocation = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, {
         zoom: 15,
-        center: myLocation
+        center: myLocation,
+        disableDefaultUI: true, 
+        options: { styles: this.styles['hide'] }
       });
 
       this.positionMarker = new google.maps.Marker({
@@ -56,11 +73,14 @@ export class HomePage {
 
     }, err => {
       console.error("Error getting location:", err);
+      return;
     });
 
     this.geo.watchPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).subscribe(resp => {
       let myLocation = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
       this.positionMarker.setPosition(myLocation);
+    }, err => {
+      console.error("Error getting location:", err);
     });
 
   }
