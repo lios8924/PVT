@@ -133,6 +133,7 @@ log.txt
 .plugins/android.json
 .plugins/ios.json
 .www/
+.www
 
 UserInterfaceState.xcuserstate
 
