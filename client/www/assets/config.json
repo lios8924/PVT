@@ -1,7 +1,0 @@
-{
-  "lampIcon": {
-    "url": "assets/imgs/Light-Bulb.png",
-    "scaledSize": 32
-  },
-  "lampDatabaseLocation": "assets/lamps.json"
-}
