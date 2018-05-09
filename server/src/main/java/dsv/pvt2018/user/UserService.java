@@ -27,7 +27,6 @@ public class UserService {
 	public void registerUser(String username, String password){
 		User user = new User(username, password);
 		addUser(user);
-		//gör något med password
 	}
 	
 	public void registerUser(User user){
