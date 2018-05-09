@@ -22,12 +22,12 @@
       <ion-card-content>
         <ion-list no-line>
           <ion-item>
-            <ion-input id="nameinput" type="text" placeholder="Username" [(ngModel)]="userinputname"></ion-input>
+            <ion-input type="text" placeholder="Username" [(ngModel)]="usernameinput"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input id="passinput" type="text" placeholder="Password" [(ngModel)]="userinputpassword"></ion-input>
+            <ion-input type="text" placeholder="Password" [(ngModel)]="passwordinput"></ion-input>
           </ion-item>
-          <button ion-button block outline color (click)="login()">Log in</button>
+          <button ion-button block outline color (click)="loginPost()">Log in</button>
           <p>OR</p>
           <button ion-button block outline color (click)="signup()">Sign up</button>
         </ion-list>

@@ -8,26 +8,31 @@
 
 
 <ion-content class="background" >
+
+    <ion-row>
+        <ion-col>
+          <ion-img width="110" height="110"  src="assets/imgs/Light-Bulb.png"></ion-img>
+        </ion-col>
+      </ion-row>
+
+
   <ion-card>
     <ion-card-header>
       Register
     </ion-card-header>
-  <ion-card-content>
-<ion-list no-line>
-  <ion-item>
-    <ion-input id="nameinput" type="text" placeholder="Username" [(ngModel)]="userinputname"></ion-input>
-  </ion-item>
+    <ion-card-content>
+        <ion-list no-line>
+              <ion-item>
+                <ion-input type="text" placeholder="Username" [(ngModel)]="usernameinput"></ion-input>
+              </ion-item>
 
-  <ion-item>
-    <ion-input id="passwordinput" type="text" placeholder="Password" [(ngModel)]="passinput"></ion-input>
-  </ion-item>
+              <ion-item>
+                <ion-input type="text" placeholder="Password" [(ngModel)]="passwordinput"></ion-input>
+              </ion-item>
 
-  <ion-item>
-    <ion-input id="emailinput" type="text" placeholder="Email" [(ngModel)]="emailinput"></ion-input>
-  </ion-item>
-
-  <button ion-button block outline color (click)="signup()">Sign up</button>
-</ion-list>
-</ion-card-content>
+            <button ion-button block outline color (click)="signup()">Sign up</button>
+            <button ion-button block outline color (click)="goBack()">Go Back</button>
+        </ion-list>
+    </ion-card-content>
 </ion-card>
 </ion-content>

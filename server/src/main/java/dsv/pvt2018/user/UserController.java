@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import dsv.pvt2018.map.MapCTF;
 
 
 
@@ -39,11 +38,9 @@ public class UserController {
 	public void deleteUser(@PathVariable String username){
 		userService.deleteUser(username);
 	}
-	
-	//för att registrera mha av värden från url:en
-    @RequestMapping(method = RequestMethod.POST, value = "/registerUser")
-    public void registerUser(@RequestParam String username, 
-    		@RequestParam String password){
+
+	//för att registrera mha parametrar från url:en
+    public void registerUser(@RequestParam String username, @RequestParam String password){
         userService.registerUser(username, password);
     }
     
