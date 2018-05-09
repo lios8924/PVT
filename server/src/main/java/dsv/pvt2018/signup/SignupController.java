@@ -24,7 +24,6 @@ public class SignupController {
             loginService.addUser(user);
             return 0;
         }
-
         return 1;
     }
 }
