@@ -39,10 +39,4 @@ public class UserController {
     		@RequestParam String password, @RequestParam String email){
         userService.registerUser(username, password, email);
     }
-    
-//	@RequestMapping(method=RequestMethod.POST, value="/registerUser")
-//	public void registerUser(@RequestBody MockUser user){
-//		userService.registerUser(user);
-//	}
-    
 }
