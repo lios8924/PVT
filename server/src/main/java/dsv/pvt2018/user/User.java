@@ -1,36 +1,27 @@
 package dsv.pvt2018.user;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-@Entity // This tells Hibernate to make a table out of this class
+
+@Entity
+@Table(name = "users")
 public class User {
-//    @Id
-//    @GeneratedValue(strategy=GenerationType.AUTO)
-//    private Integer id;
-
-	//använt userName som ID så länge.
+	
 	@Id
 	private String userName;
-
-    private String email;
+    
+	@NotNull
+    private String password;
 
     public User(){}
     
-    public User(String userName, String email) {
+    public User(String userName, String password) {
 		this.userName = userName;
-		this.email = email;
+		this.password = password;
 	}
-    
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
 
     public String getName() {
         return userName;
@@ -39,13 +30,13 @@ public class User {
     public void setName(String name) {
         this.userName = name;
     }
-
-    public String getEmail() {
-        return email;
+    
+    public void setPassword(String password){
+    	this.password = password;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
+    
+    public String getPassword(){
+    	return password;
     }
 
 

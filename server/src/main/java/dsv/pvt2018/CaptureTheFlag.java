@@ -6,14 +6,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class DemoApplication extends SpringBootServletInitializer{
+public class CaptureTheFlag extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(CaptureTheFlag.class, args);
 		System.out.println("hell");
 	}
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(DemoApplication.class);
+		return builder.sources(CaptureTheFlag.class);
 	}
 }
