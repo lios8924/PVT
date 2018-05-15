@@ -3,5 +3,5 @@
     "url": "assets/imgs/Light-Bulb.png",
     "scaledSize": 32
   },
-  "lampDatabaseLocation": "assets/lamps.json"
+  "lampDatabaseLocation": "http://localhost:8080/lamps"
 }
