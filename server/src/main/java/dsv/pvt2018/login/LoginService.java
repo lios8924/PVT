@@ -1,42 +1,40 @@
 package dsv.pvt2018.login;
 
+import dsv.pvt2018.user.User;
+import dsv.pvt2018.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoginService {
 
-    private List<MockUser> users = new ArrayList<>(Arrays.asList(
-            new MockUser("User1", "1234567890"),
-            new MockUser("User2", "abcdefghij"),
-            new MockUser("User4", "12345abcde")
-    ));
+    @Autowired
+    UserService userService;
 
-    public List<MockUser> getUsers(){
-        return users;
+    public List<User> getUsers(){
+        return userService.getAllUsers();
     }
 
-    public boolean addUser(MockUser user){
-        return users.add(user);
+    public boolean addUser(User user){
+        return userService.addUser(user) != null;
     }
 
-    private MockUser findUser(String username){
-        for(MockUser u : users){
-            if(u.getUsername().equals(username))
-                return u;
-        }
-        return null;
+    private User findUser(String username){
+        Optional<User> optional = userService.findUserById(username);
+        return optional.orElse(null);
     }
 
-    public MockUser validateUserByName(String username){
+    public User validateUserByName(String username){
         return findUser(username);
     }
 
-    public MockUser validateUser(String username, String password){
-        MockUser user = findUser(username);
+    public User validateUser(String username, String password){
+        User user = findUser(username);
         if(user != null && user.getPassword().equals(password)){
             return user;
         }

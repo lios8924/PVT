@@ -1,2 +1,6 @@
 application.properties
 application.properties.local
+*.application.properties
+*/application.properties
+*.application.properties.local
+*/application.properties.local
