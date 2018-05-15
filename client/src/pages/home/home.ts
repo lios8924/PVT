@@ -90,6 +90,8 @@ export class HomePage {
       for (let i in locations) {
         this.addLampMarker(locations[i].LatLng);
       }
+    }, error => {
+      console.error("Cant retrive lamp database.");
     });
     this.setLampMarkers(this.map);
   }
