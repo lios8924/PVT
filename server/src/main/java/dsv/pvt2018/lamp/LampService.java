@@ -36,11 +36,23 @@ public class LampService {
 		return lampRepo.findByMapId(mapId);
 	}
 
-	public boolean captureLamp(String team, Integer id) {
-		Optional<Lamp> lamp = lampRepo.findById(id);
+//	public boolean captureLamp(String team, Integer id) {
+//		Optional<Lamp> lamp = lampRepo.findById(id);
+//		
+//		if(lamp.isPresent()){
+//			lamp.get().capture(team);
+//			lampRepo.save(lamp.get());
+//			return true;
+//		}
+//		
+//		return false;	
+//	}
+	
+	public boolean captureLamp(LampCapture lampCap) {
+		Optional<Lamp> lamp = lampRepo.findById(lampCap.getLampId());
 		
 		if(lamp.isPresent()){
-			lamp.get().capture(team);
+			lamp.get().capture(lampCap.getTeam());
 			lampRepo.save(lamp.get());
 			return true;
 		}
