@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { ConfigProvider } from '../../providers/config/config';
@@ -12,15 +12,16 @@ export class LampProvider {
   configPromise: Promise<{}>;
 
   constructor(public http: HttpClient, public configP: ConfigProvider) {
-    this.configPromise = this.configP.getConfig()
+    this.configPromise = this.configP.getConfig();
+    this.configPromise.then(data => {
+      this.lampDatabaseLocation = data["lampDatabaseLocation"];
+    });
   }
 
   async getLamps() {
 
-    await this.configPromise.then(data => {
-      this.lampDatabaseLocation = data["lampDatabaseLocation"];
-    });
-
+    await this.configPromise;
+    
     if (this.lampDatabaseLocation == null) {
       console.error("this.lampDatabaseLocation is not set.");
       return null;
@@ -38,4 +39,12 @@ export class LampProvider {
     });
   }
 
+  async captureLamp(id: Number, team: String) {
+
+    await this.configPromise;
+
+    console.log("Capture lamp id: " + id + " for faction: " + team);
+
+    this.http.put(this.lampDatabaseLocation + "/" + id, team);
+  }
 }
