@@ -2,12 +2,16 @@ package dsv.pvt2018.login;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "mock_users")
 public class MockUser {
 
     //private int id;
     @Id
+    @Size(max = 40)
     private String username;
     private String password;
 

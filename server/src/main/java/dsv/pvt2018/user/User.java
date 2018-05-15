@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 	
 	@Id
+	@Size(max = 40)
 	private String userName;
     
 	@NotNull
