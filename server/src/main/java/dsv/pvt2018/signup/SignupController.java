@@ -2,7 +2,7 @@ package dsv.pvt2018.signup;
 
 
 import dsv.pvt2018.login.LoginService;
-import dsv.pvt2018.login.MockUser;
+import dsv.pvt2018.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,16 +15,15 @@ public class SignupController {
 
     //Funkar, men 0 säkerhet
     @RequestMapping(method = RequestMethod.POST, value = "/signup")
-    public int signupUser(@RequestBody MockUser user){
+    public int signupUser(@RequestBody User user){
 
-        MockUser foundUser = loginService.validateUserByName(user.getUsername());
+        User foundUser = loginService.validateUserByName(user.getUsername());
 
         //No existing user, return ok
         if(foundUser == null){
             loginService.addUser(user);
             return 0;
         }
-
         return 1;
     }
 }

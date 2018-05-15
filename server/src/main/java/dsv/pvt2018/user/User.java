@@ -6,31 +6,30 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "users")
 public class User {
 	
 	@Id
 	@Size(max = 40)
-	private String userName;
+	private String username;
     
 	@NotNull
     private String password;
 
     public User(){}
     
-    public User(String userName, String password) {
-		this.userName = userName;
+    public User(String username, String password) {
+		this.username = username;
 		this.password = password;
 	}
 
-    public String getName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.userName = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
     
     public void setPassword(String password){
@@ -41,5 +40,8 @@ public class User {
     	return password;
     }
 
+    public String toString(){
+        return "Username: " + username + " - Password: " + password;
+    }
 
 }
