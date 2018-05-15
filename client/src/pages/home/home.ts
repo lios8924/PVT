@@ -88,7 +88,7 @@ export class HomePage {
   initLamps() {
     this.lampProvider.getLamps().then(locations => {
       for (let i in locations) {
-        this.addLampMarker(locations[i].LatLng);
+        this.addLampMarker(locations[i].id, locations[i].LatLng);
       }
     }, error => {
       console.error("Cant retrive lamp database.");
@@ -96,12 +96,21 @@ export class HomePage {
     this.setLampMarkers(this.map);
   }
 
-  addLampMarker(location) {
-    this.lampMarkers.push(new google.maps.Marker({
+  addLampMarker(id: Number, location) {
+    let lampMarker = new google.maps.Marker({
+      id: id,
       position: location,
       map: this.map,
-      icon: this.config.lampIcon
-    }));
+      icon: this.config.lampIcon,
+      circle: null
+    });
+    lampMarker.addListener('click', e => {
+      this.lampProvider.captureLamp(lampMarker.id, "red");
+      if (lampMarker.circle == null) {
+
+      }
+    });
+    this.lampMarkers.push(lampMarker);
   }
 
   setLampMarkers(map) {
