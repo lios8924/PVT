@@ -30,15 +30,6 @@ public class LampController {
 		return lampService.getLampsByMapId(mapId);
 	}
 	
-//	@PutMapping("/lamps/{id}")
-//	public void captureLamp(@RequestParam String team, @PathVariable Integer id){
-//		if(!lampService.captureLamp(team, id)){
-//			//kasta undantag  new ResourceNotFoundException("MapId " + id + " not found"));
-//			System.out.println("fel vid capture");
-//		}
-//		System.out.println("capture lyckades");
-//	}
-	
 	@PutMapping("/lamps")
 	public void resetLamps(){
 		lampService.resetLamps();
@@ -49,11 +40,7 @@ public class LampController {
 		System.out.println("LampCaptureToString: " + lampCap.toString());
 		if(!lampService.captureLamp(lampCap)){
 			//kasta undantag  new ResourceNotFoundException("felmeddelande"));
-			System.out.println("fel vid capture");
-			System.out.println("Lamp capture, lampId: " + lampCap.getLamp());
+			System.out.println("Fel vid capture, lampId: " + lampCap.getLamp());
 		}
-		else
-			System.out.println("capture lyckades");
-	
 	}
 }
