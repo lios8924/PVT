@@ -4,11 +4,11 @@ package dsv.pvt2018.lamp;
 public class LampCapture {
 
 	private String team;
-	private int lampId;
+	private int lamp;
 	public LampCapture(String team, int lampId) {
 		super();
 		this.team = team;
-		this.lampId = lampId;
+		this.lamp = lampId;
 	}
 	public String getTeam() {
 		return team;
@@ -17,10 +17,10 @@ public class LampCapture {
 		this.team = team;
 	}
 	public int getLampId() {
-		return lampId;
+		return lamp;
 	}
 	public void setLampId(int lampId) {
-		this.lampId = lampId;
+		this.lamp = lampId;
 	}
 	
 	
