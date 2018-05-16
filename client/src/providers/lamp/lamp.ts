@@ -14,7 +14,7 @@ export class LampProvider {
   constructor(public http: HttpClient, public configP: ConfigProvider) {
     this.configPromise = this.configP.getConfig();
     this.configPromise.then(data => {
-      this.lampDatabaseLocation = data["lampDatabaseLocation"];
+      this.lampDatabaseLocation = data["database"] + "lamps";
     });
   }
 
@@ -40,11 +40,8 @@ export class LampProvider {
   }
 
   async captureLamp(id: Number, team: String) {
-
     await this.configPromise;
-
-    console.log("Capture lamp id: " + id + " for faction: " + team);
-
+    
     let headers = new HttpHeaders();
     headers = headers.set("Accept", 'application/json');
     headers = headers.set('Content-Type', 'application/json');
@@ -54,10 +51,12 @@ export class LampProvider {
       team: team
     });
 
-    this.http.put(this.lampDatabaseLocation + "/capture", body, { headers: headers }).subscribe(data => {
-      console.log(data);
-    }, err => {
-      console.error(err);
+    return new Promise((resolve, reject) => {
+      this.http.put(this.lampDatabaseLocation + "/capture", body, { headers: headers }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        reject(err);
+      });
     });
   }
 }
