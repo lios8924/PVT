@@ -44,7 +44,6 @@ export class LampProvider {
     await this.configPromise;
 
     console.log("Capture lamp id: " + id + " for faction: " + team);
-    console.log("Send to " + this.lampDatabaseLocation + "/" + id);
 
     let headers = new HttpHeaders();
     headers = headers.set("Accept", 'application/json');
@@ -55,6 +54,10 @@ export class LampProvider {
       team: team
     });
 
-    this.http.put(this.lampDatabaseLocation + "/" + id, body, { headers: headers });
+    this.http.put(this.lampDatabaseLocation + "/" + id, body, { headers: headers }).subscribe(data => {
+      console.log(data);
+    }, err => {
+      console.error(err);
+    });
   }
 }
