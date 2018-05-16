@@ -60,6 +60,7 @@ public class Lamp {
 		this.map = map;
 	}
 	public void capture(String team){
+		captured = true;
 		this.team = team;
 	}
 	public void unCapture(){

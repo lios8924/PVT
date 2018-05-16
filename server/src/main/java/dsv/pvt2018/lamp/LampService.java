@@ -49,14 +49,15 @@ public class LampService {
 //	}
 	
 	public boolean captureLamp(LampCapture lampCap) {
-		Optional<Lamp> lamp = lampRepo.findById(lampCap.getLampId());
+		Optional<Lamp> lamp = lampRepo.findById(lampCap.getLamp());
 		
 		if(lamp.isPresent()){
+			System.out.println("lamp ID: " + lamp.get().getId());
 			lamp.get().capture(lampCap.getTeam());
 			lampRepo.save(lamp.get());
 			return true;
 		}
-		
+		System.out.println("Lamp present? : " + lamp.isPresent());
 		return false;	
 	}
 

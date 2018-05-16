@@ -5,6 +5,9 @@ public class LampCapture {
 
 	private String team;
 	private int lamp;
+	public LampCapture() {
+		super();
+	}
 	public LampCapture(String team, int lampId) {
 		super();
 		this.team = team;
@@ -13,14 +16,13 @@ public class LampCapture {
 	public String getTeam() {
 		return team;
 	}
-	public void setTeam(String team) {
-		this.team = team;
-	}
-	public int getLampId() {
+	public int getLamp() {
 		return lamp;
 	}
-	public void setLampId(int lampId) {
-		this.lamp = lampId;
+	
+	
+	public String toString(){
+		return "Team: " + team + "  lamp: " + lamp;
 	}
 	
 	

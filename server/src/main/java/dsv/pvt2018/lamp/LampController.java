@@ -2,6 +2,8 @@ package dsv.pvt2018.lamp;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,13 +45,15 @@ public class LampController {
 	}
 	
 	@PutMapping("lamps/capture")
-	public void captureLamp(@RequestBody LampCapture lampCap){
-		System.out.println("lampCapture");
+	public void captureLamp(@Valid @RequestBody LampCapture lampCap){
+		System.out.println("LampCaptureToString: " + lampCap.toString());
 		if(!lampService.captureLamp(lampCap)){
 			//kasta undantag  new ResourceNotFoundException("felmeddelande"));
 			System.out.println("fel vid capture");
+			System.out.println("Lamp capture, lampId: " + lampCap.getLamp());
 		}
-		System.out.println("capture lyckades");
+		else
+			System.out.println("capture lyckades");
+	
 	}
-
 }

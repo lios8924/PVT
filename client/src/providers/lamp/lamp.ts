@@ -50,7 +50,7 @@ export class LampProvider {
     headers = headers.set('Content-Type', 'application/json');
 
     let body = JSON.stringify({
-      id: id,
+      lamp: id,
       team: team
     });
 
