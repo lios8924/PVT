@@ -51,7 +51,7 @@ export class SignupPage {
             password: this.passwordinput
         });
 
-        console.log(this.API, body, headers);
+        //console.log(this.API, body, headers);
 
         this.http.post(this.API, body, { headers: headers }).map(data => data).subscribe(
               data => {

@@ -1,4 +1,4 @@
-package dsv.pvt2018.login;
+/*package dsv.pvt2018.login;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,7 +26,7 @@ public class MockUser {
     /*public int getId() {
         return id;
     }*/
-
+/*
     public String getUsername() {
         return username;
     }
@@ -34,10 +34,6 @@ public class MockUser {
     public String getPassword() {
         return password;
     }
-
-    /*public void setId(int id) {
-        this.id = id;
-    }*/
 
     public void setUsername(String username) {
         this.username = username;
@@ -51,4 +47,4 @@ public class MockUser {
         return "Username: " + username + " - Password: " + password;
     }
 }
-
+*/
