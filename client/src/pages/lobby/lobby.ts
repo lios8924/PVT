@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
+
 import {HomePage} from '../home/home';
+import {SharePage} from '../share/share';
 
 /**
  * Generated class for the LobbyPage page.
@@ -18,6 +20,8 @@ import {HomePage} from '../home/home';
 export class LobbyPage {
 
 
+
+
     constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     }
@@ -27,6 +31,7 @@ export class LobbyPage {
         console.log('hello ', hello);
         console.log('ionViewDidLoad LobbyPage');
     }
+
 
     redteam() {
         this.navCtrl.push(HomePage);
@@ -39,6 +44,10 @@ export class LobbyPage {
     signout() {
         localStorage.clear();
         this.navCtrl.pop();
+    }
+
+    socialShare(){
+      this.navCtrl.push(SharePage);
     }
 
 }

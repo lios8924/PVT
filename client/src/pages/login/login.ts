@@ -9,6 +9,8 @@ import 'rxjs/add/operator/map';
 import {ElementRef, ViewChild} from '@angular/core';
 import {URLSearchParams, RequestOptions} from '@angular/http';
 
+
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -28,6 +30,7 @@ export class LoginPage {
     usernameinput: string;
     passwordinput: string;
 
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public alertCtrl: AlertController) {
 
     }
@@ -39,6 +42,9 @@ export class LoginPage {
     signup() {
         this.navCtrl.push(SignupPage);
     }
+
+
+
 
     loginPost() {
         this.API = 'http://localhost:8080/login';
@@ -53,6 +59,16 @@ export class LoginPage {
         });
 
         console.log(this.API, body, headers);
+
+
+        /**/
+        if(true){
+        localStorage.setItem('username', this.usernameinput);
+        localStorage.setItem('loggedIn', 'true');
+
+        this.navCtrl.push(LobbyPage);
+      }
+        //////
 
         this.http.post(this.API, body, {headers: headers}).map(data => data).subscribe(
             data => {
@@ -79,7 +95,7 @@ export class LoginPage {
             err => {
                 console.log('helvete');
             }
-        );
+        ); 
 
     }
 
