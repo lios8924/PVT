@@ -42,7 +42,7 @@ public class LampController {
 		lampService.resetLamps();
 	}
 	
-	@PutMapping("lamps/{id}")
+	@PutMapping("lamps/capture")
 	public void captureLamp(@RequestBody LampCapture lampCap){
 		System.out.println("lampCapture");
 		if(!lampService.captureLamp(lampCap)){

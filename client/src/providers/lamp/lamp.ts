@@ -21,7 +21,7 @@ export class LampProvider {
   async getLamps() {
 
     await this.configPromise;
-    
+
     if (this.lampDatabaseLocation == null) {
       console.error("this.lampDatabaseLocation is not set.");
       return null;
@@ -54,7 +54,7 @@ export class LampProvider {
       team: team
     });
 
-    this.http.put(this.lampDatabaseLocation + "/" + id, body, { headers: headers }).subscribe(data => {
+    this.http.put(this.lampDatabaseLocation + "/capture", body, { headers: headers }).subscribe(data => {
       console.log(data);
     }, err => {
       console.error(err);
