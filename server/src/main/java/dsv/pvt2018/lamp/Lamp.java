@@ -27,6 +27,11 @@ public class Lamp {
 	@NotNull
 	private double lng;
 	
+	@NotNull
+	private boolean captured;
+	
+	private String team;
+	
 	@ManyToOne
 	@JoinColumn(name = "map_id") //, nullable = false
 	//	@JsonIgnore
@@ -37,6 +42,7 @@ public class Lamp {
 	public Lamp(double lat, double lng) {
 		this.lat = lat;
 		this.lng = lng;
+		captured = false;
 	}
 	public Integer getId() {
 		return id;
@@ -53,6 +59,23 @@ public class Lamp {
 	public void setMap(MapCTF map){
 		this.map = map;
 	}
+	public void capture(String team){
+		captured = true;
+		this.team = team;
+	}
+	public void unCapture(){
+		captured = false;
+		team = null;
+	}
+	public boolean getCaptured(){
+		return captured;
+	}
+	public String getTeam(){
+		return team;
+	}
+	
+	
+	
 	
 	
 }

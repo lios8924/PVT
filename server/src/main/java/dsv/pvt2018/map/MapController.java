@@ -26,7 +26,6 @@ public class MapController {
 		return mapService.getAllMaps();
 	}
 	
-	
 	//antingen göra såhär, eller göra som med occupyMap och kasta undantag.
 	@GetMapping("/maps/{id}")
 	public Optional<MapCTF> getMap(@PathVariable Integer id){
