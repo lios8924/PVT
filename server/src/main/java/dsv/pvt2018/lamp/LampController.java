@@ -29,17 +29,7 @@ public class LampController {
 	public List<Lamp> getLampsByMapId(@PathVariable(value = "mapId") Integer mapId) {
 		return lampService.getLampsByMapId(mapId);
 	}
-
-	// @PutMapping("/lamps/{id}")
-	// public void captureLamp(@RequestParam String team, @PathVariable Integer id){
-	// if(!lampService.captureLamp(team, id)){
-	// //kasta undantag new ResourceNotFoundException("MapId " + id + " not
-	// found"));
-	// System.out.println("fel vid capture");
-	// }
-	// System.out.println("capture lyckades");
-	// }
-
+	
 	@PutMapping("/lamps")
 	public void resetLamps() {
 		lampService.resetLamps();
