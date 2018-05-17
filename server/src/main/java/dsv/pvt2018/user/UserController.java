@@ -37,9 +37,9 @@ public class UserController {
 	}
 
 	//för att registrera mha parametrar från url:en
-    public void registerUser(@RequestParam String username, @RequestParam String password){
-        userService.registerUser(username, password);
-    }
+//    public void registerUser(@RequestParam String username, @RequestParam String password){
+//        userService.registerUser(username, password);
+//    }
     
     //för att registera mha jasonobjekt
     @PostMapping("/addUser")

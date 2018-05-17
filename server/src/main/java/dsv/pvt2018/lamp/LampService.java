@@ -2,6 +2,7 @@ package dsv.pvt2018.lamp;
 
 import org.springframework.stereotype.Service;
 
+import dsv.pvt2018.lamp.capture.LampCapture;
 import dsv.pvt2018.map.MapCTF;
 
 import java.util.ArrayList;
