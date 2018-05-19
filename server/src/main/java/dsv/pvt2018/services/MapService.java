@@ -1,4 +1,4 @@
-package dsv.pvt2018.map;
+package dsv.pvt2018.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import dsv.pvt2018.model.MapCTF;
+import dsv.pvt2018.model.MapRepository;
 
 @Service
 public class MapService {

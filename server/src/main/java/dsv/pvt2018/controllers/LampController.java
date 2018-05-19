@@ -1,10 +1,13 @@
-package dsv.pvt2018.lamp;
+package dsv.pvt2018.controllers;
 
 import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import dsv.pvt2018.model.LampCapture;
+import dsv.pvt2018.model.Lamp;
+import dsv.pvt2018.services.LampService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:8100", "file://"}) //krävs för kommunikation med ionic

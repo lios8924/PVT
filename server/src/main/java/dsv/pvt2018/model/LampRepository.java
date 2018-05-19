@@ -1,4 +1,4 @@
-package dsv.pvt2018.lamp;
+package dsv.pvt2018.model;
 
 import java.util.List;
 

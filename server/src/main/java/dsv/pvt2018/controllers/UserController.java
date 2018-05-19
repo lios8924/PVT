@@ -1,4 +1,4 @@
-package dsv.pvt2018.user;
+package dsv.pvt2018.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import dsv.pvt2018.model.User;
+import dsv.pvt2018.services.UserService;
 
 @RestController
 public class UserController {

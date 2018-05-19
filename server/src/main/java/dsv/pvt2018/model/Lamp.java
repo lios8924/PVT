@@ -1,9 +1,7 @@
-package dsv.pvt2018.lamp;
+package dsv.pvt2018.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import dsv.pvt2018.map.MapCTF;
 
 @Entity
 @Table(name = "lamps")

@@ -13,12 +13,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
-import dsv.pvt2018.lamp.Lamp;
-import dsv.pvt2018.lamp.LampRepository;
-import dsv.pvt2018.map.MapCTF;
-import dsv.pvt2018.map.MapRepository;
-import dsv.pvt2018.user.User;
-import dsv.pvt2018.user.UserRepository;
+import dsv.pvt2018.model.Lamp;
+import dsv.pvt2018.model.LampRepository;
+import dsv.pvt2018.model.MapCTF;
+import dsv.pvt2018.model.MapRepository;
+import dsv.pvt2018.model.User;
+import dsv.pvt2018.model.UserRepository;
 
 @SpringBootApplication
 public class CaptureTheLamp extends SpringBootServletInitializer{
@@ -72,6 +72,7 @@ public class CaptureTheLamp extends SpringBootServletInitializer{
 
             log.info("MY MESSAGE: Adding users...");
 //            userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10));
+            // Populating users through Set interface so that the order between users is different at each run
             userRepository.saveAll(Stream
                     .of(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
                     .collect(Collectors.toSet()

@@ -1,4 +1,4 @@
-package dsv.pvt2018.lamp;
+package dsv.pvt2018.model;
 
 
 public class LampCapture {

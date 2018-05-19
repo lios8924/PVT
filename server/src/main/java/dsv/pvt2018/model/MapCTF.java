@@ -1,4 +1,4 @@
-package dsv.pvt2018.map;
+package dsv.pvt2018.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

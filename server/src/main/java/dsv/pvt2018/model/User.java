@@ -1,4 +1,4 @@
-package dsv.pvt2018.user;
+package dsv.pvt2018.model;
 
 import java.sql.Timestamp;
 import java.util.Date;

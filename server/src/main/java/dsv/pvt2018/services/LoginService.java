@@ -1,13 +1,12 @@
-package dsv.pvt2018.login;
+package dsv.pvt2018.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import dsv.pvt2018.user.Account;
-import dsv.pvt2018.user.User;
-import dsv.pvt2018.user.UserService;
+import dsv.pvt2018.model.Account;
+import dsv.pvt2018.model.User;
 
 @Service
 public class LoginService {
