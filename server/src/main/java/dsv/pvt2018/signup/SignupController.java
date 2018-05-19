@@ -1,10 +1,10 @@
 package dsv.pvt2018.signup;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import dsv.pvt2018.login.LoginService;
 import dsv.pvt2018.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:8100", "file://"}) //krävs för kommunikation med ionic

@@ -1,14 +1,13 @@
 package dsv.pvt2018.login;
 
-import dsv.pvt2018.user.User;
-import dsv.pvt2018.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import dsv.pvt2018.user.Account;
+import dsv.pvt2018.user.User;
+import dsv.pvt2018.user.UserService;
 
 @Service
 public class LoginService {
@@ -24,8 +23,13 @@ public class LoginService {
         return userService.addUser(user) != null;
     }
 
+    private User findUser(Long id){
+        Optional<User> optional = userService.findUserById(id);
+        return optional.orElse(null);
+    }
+
     private User findUser(String username){
-        Optional<User> optional = userService.findUserById(username);
+        Optional<User> optional = userService.findUserByUserName(username);
         return optional.orElse(null);
     }
 
@@ -35,7 +39,7 @@ public class LoginService {
 
     public User validateUser(String username, String password){
         User user = findUser(username);
-        if(user != null && user.getPassword().equals(password)){
+        if(user != null && Account.encryptPassword(password, user.getSalt()).equals(user.getPassword())) {
             return user;
         }
         return null;

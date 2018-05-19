@@ -1,8 +1,10 @@
 package dsv.pvt2018.user;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-//Gjorde om denna till JPA istället för Crud. Kan ju ändras tillbaka.
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
+    Optional<User> findByUserName(String username);
 }

@@ -1,10 +1,12 @@
 package dsv.pvt2018.login;
 //DETTA FUNKAR 123
-import dsv.pvt2018.user.User;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import dsv.pvt2018.user.User;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:8100", "file://"}) //krävs för kommunikation med ionic

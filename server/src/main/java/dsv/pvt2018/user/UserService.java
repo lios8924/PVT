@@ -13,9 +13,13 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public Optional<User> findUserById(String username){
-		return userRepository.findById(username);
+	public Optional<User> findUserById(Long id){
+		return userRepository.findById(id);
 	}
+
+	public Optional<User> findUserByUserName(String username) {
+	    return userRepository.findByUserName(username);
+    }
 	
 	public List<User> getAllUsers(){
 		List<User> users = new ArrayList<>();
@@ -23,8 +27,8 @@ public class UserService {
 		return users;
 	}
 	
-	public User registerUser(String username, String password){
-		User user = new User(username, password);
+	public User registerUser(String username, String email, String password){
+		User user = new User(username, email, password);
 		return userRepository.save(user);
 	}
 	
@@ -32,8 +36,15 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-	public void deleteUser(String username) {
-		userRepository.deleteById(username);
+	public void deleteUser(Long id) {
+		userRepository.deleteById(id);
 	}
+
+	public void deleteUser(String username) {
+	    Optional<User> foundUser = userRepository.findByUserName(username);
+	    if (foundUser.isPresent()) {
+	        userRepository.deleteById(foundUser.get().getUserId());
+        }
+    }
 	
 }

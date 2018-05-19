@@ -2,17 +2,10 @@ package dsv.pvt2018.user;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -28,7 +21,7 @@ public class UserController {
 	
 	@RequestMapping("users/{username}")
 	public Optional<User> getUser(@PathVariable String username){
-		return userService.findUserById(username);
+		return userService.findUserByUserName(username);
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/users/{username}")
@@ -37,8 +30,8 @@ public class UserController {
 	}
 
 	//för att registrera mha parametrar från url:en
-    public void registerUser(@RequestParam String username, @RequestParam String password){
-        userService.registerUser(username, password);
+    public void registerUser(@RequestParam String username, @RequestParam String email, @RequestParam String password){
+        userService.registerUser(username, email, password);
     }
     
     //för att registera mha jasonobjekt
@@ -46,6 +39,5 @@ public class UserController {
 	public User addUser(@Valid @RequestBody User user){
 		return userService.addUser(user);
 	}
-    
-    
+
 }

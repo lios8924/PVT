@@ -1,4 +1,6 @@
+#
 # Reference: https://github.com/github/gitignore
+#
 
 ### Maven ###
 target/
@@ -41,8 +43,8 @@ gradle-app.setting
 
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
