@@ -64,6 +64,7 @@ public class User {
         return account;
     }
 
+    // Is this necessary?
     public void setAccount(Account account) {
         System.out.println("Setting account for user (" + userId + ", " + userName + ")");
         if (account == null) {
@@ -98,6 +99,12 @@ public class User {
 
     public String getSalt() {
         return account.getSalt();
+    }
+
+    public void setDetails(String firstName, String lastName, String profile) {
+        userDetail.setFirstName(firstName);
+        userDetail.setLastName(lastName);
+        userDetail.setProfile(profile);
     }
 
 /*

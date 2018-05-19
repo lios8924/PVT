@@ -23,7 +23,7 @@ public class MapService {
 		return mapRepo.findById(id);
 	}
 
-	public MapCTF addMap(MapCTF map){
+	public MapCTF addMap(MapCTF map) {
 		return mapRepo.save(map);
 	}
 	

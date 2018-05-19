@@ -15,7 +15,7 @@ public class SignupController {
 
     //Funkar, men 0 säkerhet
     @RequestMapping(method = RequestMethod.POST, value = "/signup")
-    public int signupUser(@RequestBody User user){
+    public int signupUser(@RequestBody User user) {
 
         User foundUser = loginService.validateUserByName(user.getUsername());
 

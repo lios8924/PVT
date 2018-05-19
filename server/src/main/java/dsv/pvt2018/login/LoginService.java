@@ -15,29 +15,29 @@ public class LoginService {
     @Autowired
     UserService userService;
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userService.getAllUsers();
     }
 
-    public boolean addUser(User user){
+    public boolean addUser(User user) {
         return userService.addUser(user) != null;
     }
 
-    private User findUser(Long id){
+    private User findUser(Long id) {
         Optional<User> optional = userService.findUserById(id);
         return optional.orElse(null);
     }
 
-    private User findUser(String username){
+    private User findUser(String username) {
         Optional<User> optional = userService.findUserByUserName(username);
         return optional.orElse(null);
     }
 
-    public User validateUserByName(String username){
+    public User validateUserByName(String username) {
         return findUser(username);
     }
 
-    public User validateUser(String username, String password){
+    public User validateUser(String username, String password) {
         User user = findUser(username);
         if(user != null && Account.encryptPassword(password, user.getSalt()).equals(user.getPassword())) {
             return user;

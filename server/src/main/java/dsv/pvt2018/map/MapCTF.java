@@ -1,11 +1,6 @@
 package dsv.pvt2018.map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,7 +19,7 @@ public class MapCTF {
 	
 	private boolean occupied;
 	
-	public MapCTF(){}
+	public MapCTF() {}
 
 	public MapCTF(String name) {
 		super();
@@ -51,6 +46,5 @@ public class MapCTF {
 	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
-	
-	
+
 }

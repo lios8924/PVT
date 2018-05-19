@@ -16,7 +16,7 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/login")
-    public List<User> getServiceUsers(){
+    public List<User> getServiceUsers() {
         return loginService.getUsers();
     }
 

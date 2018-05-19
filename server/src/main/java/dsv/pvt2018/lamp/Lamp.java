@@ -1,14 +1,6 @@
 package dsv.pvt2018.lamp;
 
-
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import dsv.pvt2018.map.MapCTF;
@@ -37,45 +29,50 @@ public class Lamp {
 	//	@JsonIgnore
 	private MapCTF map;
 	
-	public Lamp(){}
+	public Lamp() {}
 	
 	public Lamp(double lat, double lng) {
 		this.lat = lat;
 		this.lng = lng;
 		captured = false;
 	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public double getLat() {
 		return lat;
 	}
+
 	public double getLng() {
 		return lng;
 	}
-	public MapCTF getMap(){
+
+	public MapCTF getMap() {
 		return map;
 	}
-	public void setMap(MapCTF map){
+
+	public void setMap(MapCTF map) {
 		this.map = map;
 	}
-	public void capture(String team){
+
+	public void capture(String team) {
 		captured = true;
 		this.team = team;
 	}
-	public void unCapture(){
+
+	public void unCapture() {
 		captured = false;
 		team = null;
 	}
-	public boolean getCaptured(){
+
+	public boolean getCaptured() {
 		return captured;
 	}
-	public String getTeam(){
+
+	public String getTeam() {
 		return team;
 	}
-	
-	
-	
-	
-	
+
 }

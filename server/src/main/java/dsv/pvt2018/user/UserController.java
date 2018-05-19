@@ -15,22 +15,27 @@ public class UserController {
 	
 	//tveksamt om denna ska finnas sen, iaf som public
 	@RequestMapping("/users")
-	public List<User> getAllUsers(){
+	public List<User> getAllUsers() {
 		return userService.getAllUsers();
 	}
 	
 	@RequestMapping("users/{username}")
-	public Optional<User> getUser(@PathVariable String username){
+	public Optional<User> getUser(@PathVariable String username) {
 		return userService.findUserByUserName(username);
 	}
+
+	@RequestMapping("users/id/{userId}")
+    public Optional<User> getUserById(@PathVariable Long userId) {
+        return userService.findUserById(userId);
+    }
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/users/{username}")
-	public void deleteUser(@PathVariable String username){
+	public void deleteUser(@PathVariable String username) {
 		userService.deleteUser(username);
 	}
 
 	//för att registrera mha parametrar från url:en
-    public void registerUser(@RequestParam String username, @RequestParam String email, @RequestParam String password){
+    public void registerUser(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
         userService.registerUser(username, email, password);
     }
     
