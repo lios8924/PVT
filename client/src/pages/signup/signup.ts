@@ -37,7 +37,7 @@ export class SignupPage {
     }
 
     //Funkar, men 0 säkerhet
-    signup(){
+    signup() {
 
         this.API = 'http://localhost:8080/signup';
 
@@ -76,7 +76,7 @@ export class SignupPage {
 
     }
 
-    goBack(){
+    goBack() {
         this.navCtrl.pop();
     }
 

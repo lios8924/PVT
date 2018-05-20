@@ -12,7 +12,7 @@ public class Account {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "email", nullable = false, length = 255)
+    @Column(name = "email", nullable = false, unique = true, length = 255)
     private String email;
 
     @Column(name = "salt", nullable = false, length = 32)
@@ -29,11 +29,11 @@ public class Account {
 
     Account() { }
 
-    public Account(String email, String clearPassword, User user) {
+    public Account(String email, String clearPassword, String salt, User user) {
         System.out.println("Constructing account for user (" + user.getUserId() + ", " + user.getUsername() + ")");
         this.user = user;
         this.email = email;
-        this.salt = createSalt();
+        this.salt = salt != null ? salt : createSalt();
         this.password = encryptPassword(clearPassword, this.salt);
     }
 
@@ -77,7 +77,7 @@ public class Account {
         this.user = user;
     }
 
-    protected String createSalt() {
+    public static String createSalt() {
         // TODO
         return "1234567890abcdefghiklmnopqrstuvw";
     }

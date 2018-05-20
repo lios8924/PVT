@@ -20,6 +20,7 @@ public class UserService {
 	}
 
 	public Optional<User> findUserByUserName(String username) {
+		System.err.println("In userService.findUserByUserName(" + username + ")");
 	    return userRepository.findByUserName(username);
     }
 	
@@ -29,8 +30,8 @@ public class UserService {
 		return users;
 	}
 	
-	public User registerUser(String username, String email, String password){
-		User user = new User(username, email, password);
+	public User registerUser(String username, String email, String password, String salt){
+		User user = new User(username, email, password, salt);
 		return userRepository.save(user);
 	}
 	

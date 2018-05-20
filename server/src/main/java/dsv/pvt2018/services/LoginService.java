@@ -24,11 +24,16 @@ public class LoginService {
 
     private User findUser(Long id) {
         Optional<User> optional = userService.findUserById(id);
+        // TODO Remove null-returns
         return optional.orElse(null);
     }
 
     private User findUser(String username) {
+        System.err.println("In loginService.findUser(" + username + ")");
         Optional<User> optional = userService.findUserByUserName(username);
+        System.err.println("In loginService.findUser(" + username + ") -- userService returned optional "
+                + (optional.isPresent() ? "present" : "missing"));
+        // TODO Remove null-returns
         return optional.orElse(null);
     }
 
@@ -37,8 +42,10 @@ public class LoginService {
     }
 
     public User validateUser(String username, String password) {
+        System.err.println("In validateUser(" + username + ", " + password + ")");
         User user = findUser(username);
-        if(user != null && Account.encryptPassword(password, user.getSalt()).equals(user.getPassword())) {
+        // TODO handle return of Optional<User> in findUser() call
+        if (user != null && Account.encryptPassword(password, user.getSalt()).equals(user.getPassword())) {
             return user;
         }
         return null;

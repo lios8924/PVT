@@ -13,7 +13,7 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "user_name", nullable = false, length = 32)
+    @Column(name = "user_name", nullable = false, unique = true, length = 32)
     private String userName;
 
     @Column(name = "creation_time")
@@ -27,9 +27,9 @@ public class User {
 
     User() { }
 
-    public User(String userName, String email, String password) {
+    public User(String userName, String email, String password, String salt) {
         this.userName = userName;
-        this.account = new Account(email, password, this);
+        this.account = new Account(email, password, salt, this);
         this.userDetail = new UserDetail(this);
 //        Date currentDate = new Date();
 //        this.creationTime = new Timestamp(currentDate.getTime());
