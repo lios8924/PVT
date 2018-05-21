@@ -1,11 +1,16 @@
 package dsv.pvt2018.controllers;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dsv.pvt2018.model.Account;
 import dsv.pvt2018.model.User;
 import dsv.pvt2018.services.UserService;
 
@@ -43,8 +48,27 @@ public class UserController {
     
     //för att registera mha jasonobjekt
     @PostMapping("/addUser")
-	public User addUser(@Valid @RequestBody User user){
-		return userService.addUser(user);
+	public User addUser(@Valid @RequestBody String body) throws IOException {
+	    // FIXME
+        final ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(body);
+        String uname = jsonNode.get("username").textValue();
+        String pwd = jsonNode.get("password").textValue();
+        JsonNode email = jsonNode.get("email");
+        JsonNode salt = jsonNode.get("salt");
+        String mailstr = "unknown@unknownhost.unknowndomain";
+        String saltstr;
+
+        // TODO Change the client code to eliminate the need for these tests
+        if (email != null) {
+            mailstr = email.textValue();
+        }
+        if (salt != null) {
+            saltstr = salt.textValue();
+        } else {
+            saltstr = Account.createSalt();
+        }
+		return userService.addUser(new User(uname, mailstr, pwd, saltstr));
 	}
 
 }
