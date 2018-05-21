@@ -1,6 +1,7 @@
 package dsv.pvt2018.controllers;
 
 import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import dsv.pvt2018.model.Lamp;
 import dsv.pvt2018.services.LampService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:8100", "file://"}) //krävs för kommunikation med ionic
+@CrossOrigin(origins = {"http://localhost:8100", "file://"}) // krävs för kommunikation med ionic
 public class LampController {
 
 	@Autowired
@@ -33,11 +34,15 @@ public class LampController {
 	}
 	
 	@PutMapping("lamps/capture")
-	public void captureLamp(@Valid @RequestBody LampCapture lampCap) {
+	public int captureLamp(@Valid @RequestBody LampCapture lampCap) {
 		System.out.println("LampCaptureToString: " + lampCap.toString());
-		if(!lampService.captureLamp(lampCap)){
+		if (!lampService.captureLamp(lampCap)) {
 			//kasta undantag  new ResourceNotFoundException("felmeddelande"));
 			System.out.println("Fel vid capture, lampId: " + lampCap.getLamp());
+            System.out.println("Lamp capture, lampId: " + lampCap.getLamp());
+            return 0;
 		}
+        System.out.println("capture lyckades");
+        return 1;
 	}
 }
