@@ -1,9 +1,0 @@
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
-
-spring.jpa.hibernate.ddl-auto=create
-spring.datasource.url=jdbc:mysql://mysql.dsv.su.se:3306/osem6498
-spring.datasource.username=osem6498
-spring.datasource.password=Ieph4ePaemo5
-
-spring.datasource.initialization-mode=always
