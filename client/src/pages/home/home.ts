@@ -1,10 +1,13 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, NavParams } from 'ionic-angular';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { ConfigProvider } from '../../providers/config/config';
 import { LampProvider } from '../../providers/lamp/lamp';
+
+import {EndPage} from '../end/end';
+
 
 declare var google: any;
 
@@ -37,7 +40,7 @@ export class HomePage {
     ]
   };
 
-  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform, public lampProvider: LampProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform, public lampProvider: LampProvider) {
     platform.ready().then(() => {
       this.showConfig();
       this.initLamps();
@@ -59,7 +62,7 @@ export class HomePage {
       this.map = new google.maps.Map(this.mapElement.nativeElement, {
         zoom: 15,
         center: myLocation,
-        disableDefaultUI: true, 
+        disableDefaultUI: true,
         options: { styles: this.styles['hide'] }
       });
 
@@ -127,7 +130,7 @@ export class HomePage {
 
   setLampMarkerTeam(marker, team) {
     marker.team = team;
-    
+
     marker.setIcon({
       url: "https://www.shareicon.net/data/256x256/2015/09/24/106596_energy_512x512.png",
       scaledSize: new google.maps.Size(32, 32)
@@ -160,4 +163,9 @@ export class HomePage {
       this.lampMarkers[i].icon = this.config.lampIcon;
     }
   }
+
+  endgame(){
+    this.navCtrl.push(EndPage);
+  }
+
 }

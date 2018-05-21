@@ -3,6 +3,8 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 import {HomePage} from '../home/home';
 
+
+
 /**
  * Generated class for the LobbyPage page.
  *
@@ -40,5 +42,6 @@ export class LobbyPage {
         localStorage.clear();
         this.navCtrl.pop();
     }
+  
 
 }

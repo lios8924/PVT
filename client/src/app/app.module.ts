@@ -11,9 +11,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { EndPage } from '../pages/end/end';
+
 import { LobbyPage } from '../pages/lobby/lobby';
 import { ConfigProvider } from '../providers/config/config';
 import { LampProvider } from '../providers/lamp/lamp';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 
 @NgModule({
@@ -22,6 +26,7 @@ import { LampProvider } from '../providers/lamp/lamp';
     LoginPage,
     SignupPage,
     LobbyPage,
+    EndPage,
     HomePage
   ],
   imports: [
@@ -35,6 +40,7 @@ import { LampProvider } from '../providers/lamp/lamp';
     LoginPage,
     SignupPage,
     LobbyPage,
+    EndPage,
     HomePage
   ],
   providers: [
@@ -43,7 +49,8 @@ import { LampProvider } from '../providers/lamp/lamp';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     Geolocation,
     ConfigProvider,
-    LampProvider
+    LampProvider,
+    SocialSharing
   ]
 })
 export class AppModule {}
