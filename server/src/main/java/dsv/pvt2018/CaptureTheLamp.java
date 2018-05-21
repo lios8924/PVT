@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +22,9 @@ public class CaptureTheLamp extends SpringBootServletInitializer{
 
     private static final Logger log = LoggerFactory.getLogger(CaptureTheLamp.class);
 
+    @Value("${spring.jpa.hibernate.ddl-auto}")
+    private String hibernateDDL;
+
 	public static void main(String[] args) {
 		SpringApplication.run(CaptureTheLamp.class, args);
 		System.out.println("hell");
@@ -34,23 +38,26 @@ public class CaptureTheLamp extends SpringBootServletInitializer{
 	@Bean
     public CommandLineRunner demo(UserRepository userRepository, MapRepository mapRepository, LampRepository lampRepository) {
 	    return (args) -> {
-	        // Uncomment following line if the DB is empty or new
-	        populateDb(userRepository, mapRepository, lampRepository);
-
-            // Fetch all users
-            log.info("-------------------------------");
-            log.info("Users found with findAll():");
-            log.info("-------------------------------");
-            for (User user : userRepository.findAll()) {
-                log.info("OUTPUT: " + user.toString());
+            // If Hibernate is set to 'create' or 'create-drop' the database
+            // will be populated with some users, lamps and maps
+            if (hibernateDDL.contains("create")) {
+                populateDb(userRepository, mapRepository, lampRepository);
             }
 
-            log.info("--------------------------------");
-            log.info("Finding user by userName");
-            log.info("--------------------------------");
+            // Fetch all users
+            System.out.println("-------------------------------");
+            System.out.println("Users found with findAll():");
+            System.out.println("-------------------------------");
+            for (User user : userRepository.findAll()) {
+                System.out.println("OUTPUT: " + user.toString());
+            }
+
+            System.out.println("--------------------------------");
+            System.out.println("Finding user by userName");
+            System.out.println("--------------------------------");
             Optional<User> optionalUser = userRepository.findByUserName("zeron");
             if (optionalUser.isPresent()) {
-                log.info("User found with findByUserName(zeron):");
+                System.out.println("User found with findByUserName(zeron):");
                 User foundUser = optionalUser.get();
                 System.out.println("userID: " + foundUser.getUserId() + ", userName: " + foundUser.getUsername() +
                         ", created: " + foundUser.getCreationTime());
@@ -66,16 +73,12 @@ public class CaptureTheLamp extends SpringBootServletInitializer{
                 System.out.println("Reverse user toString: " + revUser.toString());
             }
 
-            log.info("--------------------------------");
-            log.info("Login Controller");
-            log.info("--------------------------------");
-
         };
     }
 
     public boolean populateDb(UserRepository userRepository, MapRepository mapRepository, LampRepository lampRepository) {
         // Add some users
-        log.info("MY MESSAGE: Creating users...");
+        log.info("POPULATE DB: Creating users...");
 
         User user1 = new User("Hitchhiker", "ford@theguide.megadodo.ursaminor", "EroticonVI", Account.createSalt());
         user1.setDetails("Ford", "Prefect", "");
@@ -106,7 +109,7 @@ public class CaptureTheLamp extends SpringBootServletInitializer{
         User user10 = new User("zeron", "zzz@gmail.com", "HatulMadan", Account.createSalt());
         user10.setDetails("Victor", "S", "");
 
-        log.info("MY MESSAGE: Adding users...");
+        log.info("POPULATE DB: Adding users...");
 //            userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10));
         // Populating users through Set interface so that the order between users is different at each run
         userRepository.saveAll(Stream
@@ -116,7 +119,7 @@ public class CaptureTheLamp extends SpringBootServletInitializer{
 //            Stream.of(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10).forEach(user -> userRepository.save(user));
 
         // Add a few maps
-        log.info("MY MESSAGE: Creating maps...");
+        log.info("POPULATE DB: Creating maps...");
         MapCTF map1 = new MapCTF("Map 1");
         MapCTF map2 = new MapCTF("Map 2");
         MapCTF map3 = new MapCTF("Map 3");
@@ -124,7 +127,7 @@ public class CaptureTheLamp extends SpringBootServletInitializer{
         mapRepository.saveAll(Arrays.asList(map1, map2, map3, map4));
 
         // Add a few lamps
-        log.info("MY MESSAGE: Creating lamps...");
+        log.info("POPULATE DB: Creating lamps...");
         Lamp lamp1 = new Lamp(59.407979, 17.945867);
         lamp1.setMap(map1);
         Lamp lamp2 = new Lamp(59.406722, 17.942627);
