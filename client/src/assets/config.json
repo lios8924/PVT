@@ -1,7 +1,10 @@
 {
   "lampIcon": {
-    "url": "assets/imgs/Light-Bulb.png",
+    "def": "assets/imgs/Light-Bulb.png",
+    "red": "https://www.shareicon.net/data/256x256/2015/09/24/106596_energy_512x512.png",
+    "blue": "http://icons.iconarchive.com/icons/icons8/ios7/512/Household-Lamp-icon.png",
     "scaledSize": 32
   },
+  "lampCircleSize": 30,
   "database": "http://localhost:8080/"
 }

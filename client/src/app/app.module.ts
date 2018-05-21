@@ -14,6 +14,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { LobbyPage } from '../pages/lobby/lobby';
 import { ConfigProvider } from '../providers/config/config';
 import { LampProvider } from '../providers/lamp/lamp';
+import { ProflieProvider } from '../providers/proflie/proflie';
+import { LampMarkers } from '../assets/ts/LampMarkers';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { LampProvider } from '../providers/lamp/lamp';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     Geolocation,
     ConfigProvider,
-    LampProvider
+    LampProvider,
+    ProflieProvider,
+    LampMarkers
   ]
 })
 export class AppModule {}
