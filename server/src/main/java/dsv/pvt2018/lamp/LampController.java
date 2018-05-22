@@ -41,7 +41,7 @@ public class LampController {
 		if (!lampService.captureLamp(lampCap)) {
 			// kasta undantag new ResourceNotFoundException("felmeddelande"));
 			System.out.println("fel vid capture");
-			System.out.println("Lamp capture, lampId: " + lampCap.getLamp());
+			System.out.println("Lamp capture, lampId: " + lampCap.getLamp() + ", team: " + lampCap.getTeam());
 			return 0;
 		}
 		System.out.println("capture lyckades");

@@ -17,7 +17,8 @@ import { LobbyPage } from '../pages/lobby/lobby';
 import { ConfigProvider } from '../providers/config/config';
 import { LampProvider } from '../providers/lamp/lamp';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { ProflieProvider } from '../providers/proflie/proflie';
+import { LampMarkers } from '../assets/ts/LampMarkers';
 
 
 @NgModule({
@@ -50,7 +51,9 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     Geolocation,
     ConfigProvider,
     LampProvider,
-    SocialSharing
+    SocialSharing,
+    ProflieProvider,
+    LampMarkers
   ]
 })
 export class AppModule {}
