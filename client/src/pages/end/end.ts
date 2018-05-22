@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 import {LoginPage} from '../login/login';
+import {LobbyPage} from '../lobby/lobby';
 
 /**
  * Generated class for the EndPage page.
@@ -38,5 +39,9 @@ export class EndPage {
   signout() {
       localStorage.clear();
       this.navCtrl.push(LoginPage);
+  }
+
+  restart() {
+    this.navCtrl.push(LobbyPage);
   }
 }

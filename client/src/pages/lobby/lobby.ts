@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 import {HomePage} from '../home/home';
+import {LoginPage} from '../login/login';
 
 
 
@@ -39,9 +40,9 @@ export class LobbyPage {
     }
 
     signout() {
-        localStorage.clear();
-        this.navCtrl.pop();
+      localStorage.clear();
+      this.navCtrl.push(LoginPage);
     }
-  
+
 
 }
