@@ -15,7 +15,7 @@ export class LampMarkers {
     blue: null
   };
   circleSize: number = 10;
- 
+
 
   constructor(public lampProvider: LampProvider, public configProvider: ConfigProvider, public profile: ProflieProvider) {
     this.configProvider.getConfig().then(data => {
@@ -61,7 +61,7 @@ export class LampMarkers {
           console.error("Cant capture, check server log for error mesage.");
         }
       }, err => {
-        console.error("Capture http error:",err);
+        console.error("Capture http error:", err);
       });
     });
 
@@ -70,7 +70,7 @@ export class LampMarkers {
 
   setLampMarkerTeam(map, marker, team) {
     marker.team = team;
-    
+
     marker.setIcon(this.lampIcon[team]);
 
     if (marker.circle == null) {
@@ -90,6 +90,28 @@ export class LampMarkers {
         strokeColor: this.profile.getTeamColor(marker.team)
       })
     }
+  }
+
+  captureLamp(marker, map) {
+    let team = this.profile.team;
+    this.lampProvider.captureLamp(marker.id, team).then(r => {
+      if (r == 1) {
+        this.setLampMarkerTeam(map, marker, team);
+      } else {
+        console.error("Cant capture, check server log for error mesage.");
+      }
+    }, err => {
+      console.error("Capture http error:", err);
+    });
+  }
+
+  getLampMarker(id) {
+    for (let i in this.lampMarkers) {
+      if (this.lampMarkers[i].id === id) {
+        return this.lampMarkers[i];
+      }
+    }
+    return null;
   }
 
   setLampMarkers(map) {
