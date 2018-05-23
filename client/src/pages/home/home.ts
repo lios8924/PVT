@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, NavParams } from 'ionic-angular';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -7,6 +7,9 @@ import { ConfigProvider } from '../../providers/config/config';
 import { ProflieProvider } from '../../providers/proflie/proflie';
 import { LampMarkers } from '../../assets/ts/LampMarkers';
 import { nfcComponent } from '../../assets/ts/nfcComponent';
+
+import {EndPage} from '../end/end';
+
 
 declare var google: any;
 
@@ -35,7 +38,7 @@ export class HomePage {
     ]
   };
 
-  constructor(public navCtrl: NavController, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform, public profile: ProflieProvider, public lampMarkers: LampMarkers, public nfc: nfcComponent) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public configProvider: ConfigProvider, public platform: Platform, public profile: ProflieProvider, public lampMarkers: LampMarkers, public nfc: nfcComponent) {
     platform.ready().then(() => {
       this.nfc.initNFC();
       this.initMap();
@@ -69,10 +72,10 @@ export class HomePage {
         console.error("Error getting location:", err);
       });
 
-    }, err => {
-      console.error("Error getting init location:", err);
     });
   }
 
-
+  endgame(){
+    this.navCtrl.push(EndPage);
+  }
 }

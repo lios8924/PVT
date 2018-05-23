@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import {HomePage} from '../home/home';
+import {LoginPage} from '../login/login';
 import { ProflieProvider } from '../../providers/proflie/proflie';
 
 @IonicPage()
@@ -20,10 +21,9 @@ export class LobbyPage {
     this.navCtrl.push(HomePage);
   }
 
-  signout() {
-    this.profile.signout();
-    localStorage.clear();
-    this.navCtrl.pop();
-  }
-
+    signout() {
+      this.profile.signout();
+      localStorage.clear();
+      this.navCtrl.push(LoginPage);
+    }
 }
