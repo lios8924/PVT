@@ -1,48 +1,29 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {HomePage} from '../home/home';
 import {LoginPage} from '../login/login';
-
-
-
-/**
- * Generated class for the LobbyPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ProflieProvider } from '../../providers/proflie/proflie';
 
 @IonicPage()
 @Component({
-    selector: 'page-lobby',
-    templateUrl: 'lobby.html',
+  selector: 'page-lobby',
+  templateUrl: 'lobby.html',
 })
 export class LobbyPage {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public profile: ProflieProvider) {
 
+  }
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-    }
-
-    ionViewDidLoad() {
-        let hello = localStorage.getItem('username');
-        console.log('hello ', hello);
-        console.log('ionViewDidLoad LobbyPage');
-    }
-
-    redteam() {
-        this.navCtrl.push(HomePage);
-    }
-
-    blueteam() {
-        this.navCtrl.push(HomePage);
-    }
+  setTeam(team) {
+    this.profile.setTeam(team);
+    this.navCtrl.push(HomePage);
+  }
 
     signout() {
+      this.profile.signout();
       localStorage.clear();
       this.navCtrl.push(LoginPage);
     }
-
-
 }

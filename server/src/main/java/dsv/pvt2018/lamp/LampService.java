@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import dsv.pvt2018.map.MapCTF;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,8 @@ public class LampService {
 
 	@Autowired
 	private LampRepository lampRepo;
+	
+	private String[] validTeams = {"red", "blue"};
 	
 	public List<Lamp> getAllLamps(){
 		List<Lamp> lamps = new ArrayList<>();
@@ -35,20 +38,11 @@ public class LampService {
 	public List<Lamp> getLampsByMapId(Integer mapId) {
 		return lampRepo.findByMapId(mapId);
 	}
-
-//	public boolean captureLamp(String team, Integer id) {
-//		Optional<Lamp> lamp = lampRepo.findById(id);
-//		
-//		if(lamp.isPresent()){
-//			lamp.get().capture(team);
-//			lampRepo.save(lamp.get());
-//			return true;
-//		}
-//		
-//		return false;	
-//	}
 	
 	public boolean captureLamp(LampCapture lampCap) {
+		if(!Arrays.asList(validTeams).contains(lampCap.getTeam())) {
+			return false;
+		}
 		Optional<Lamp> lamp = lampRepo.findById(lampCap.getLamp());
 		
 		if(lamp.isPresent()){

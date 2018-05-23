@@ -9,17 +9,17 @@
 
   <ion-title> Welcome </ion-title>
 
-  <button class= "button2" ion-button icon-start (click)="blueteam()">
-  <ion-icon name="star"></ion-icon>
-  Blue Team
-</button>
+  <button class="button2" ion-button icon-start (click)="setTeam('blue')">
+    <ion-icon name="star"></ion-icon>
+    Blue Team
+  </button>
 
-<button class= "button3" ion-button icon-end (click)="redteam()">
-  Red Team
-  <ion-icon name="star"></ion-icon>
-</button>
+  <button class="button3" ion-button icon-end (click)="setTeam('red')">
+    Red Team
+    <ion-icon name="star"></ion-icon>
+  </button>
 
-<button class= "button1" ion-button full outline (click)="signout()">Sign Out</button>
+  <button class="button1" ion-button full outline (click)="signout()">Sign Out</button>
 
 
 </ion-content>
