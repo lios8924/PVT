@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { NFC, Ndef } from '@ionic-native/nfc';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,6 +17,7 @@ import { ConfigProvider } from '../providers/config/config';
 import { LampProvider } from '../providers/lamp/lamp';
 import { ProflieProvider } from '../providers/proflie/proflie';
 import { LampMarkers } from '../assets/ts/LampMarkers';
+import { nfcComponent } from '../assets/ts/nfcComponent';
 
 
 @NgModule({
@@ -47,7 +49,10 @@ import { LampMarkers } from '../assets/ts/LampMarkers';
     ConfigProvider,
     LampProvider,
     ProflieProvider,
-    LampMarkers
+    LampMarkers,
+    NFC,
+    Ndef,
+    nfcComponent
   ]
 })
 export class AppModule {}
