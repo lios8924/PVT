@@ -7,29 +7,27 @@
 
 
 
-
-
-
-
-
-
 <ion-content class="background">
-  <ion-title>Thanks for playing</ion-title>
-<ion-card-content>
-  <button ion-button full (click)="restart()">Play Again</button>
-  </ion-card-content>
+  <h1>Thanks for playing</h1>
 
 <ion-card-content>
+  <div id="play">
+  <button id="playbutton"ion-button full (click)="restart()">Play Again</button>
 
-  <ion-title>Share your score</ion-title>
-  <ion-title></ion-title>
+<div id="share">
+  <h2>SHARE  YOUR  SCORE</h2>
   <ion-list>
     <ion-item>
       <ion-input [(ngModel)]="message" placeholder="Enter score"></ion-input>
     </ion-item>
-  </ion-list>
     <button ion-button full (click)="share()">Social Share</button>
+  </ion-list>
+
+    </div>
+  </div>
+
   </ion-card-content>
+
 
 <button class= "button1" ion-button full outline (click)="signout()">Sign Out</button>
 
