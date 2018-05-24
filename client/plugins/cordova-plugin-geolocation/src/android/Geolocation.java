@@ -18,11 +18,20 @@
 
 package org.apache.cordova.geolocation;
 
-import android.Manifest;
 import android.content.pm.PackageManager;
-import org.apache.cordova.*;
+import android.Manifest;
+import android.os.Build;
+
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaArgs;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PermissionHelper;
+import org.apache.cordova.PluginResult;
+import org.apache.cordova.LOG;
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import javax.security.auth.callback.Callback;
 
 public class Geolocation extends CordovaPlugin {
 

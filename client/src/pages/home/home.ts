@@ -72,6 +72,8 @@ export class HomePage {
         console.error("Error getting location:", err);
       });
 
+    }).catch(err => {
+      console.error("Error getting location:", err);
     });
   }
 
