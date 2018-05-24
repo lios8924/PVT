@@ -17,7 +17,9 @@ export class nfcComponent {
       console.log('error attaching ndef listener', err);
     }).subscribe(e => {
       for (let i in e.tag.ndefMessage) {
-        let marker = this.LampMarkers.getLampMarker(e.tag.ndefMessage[i].tnf);
+        let payload = e.tag.ndefMessage[i].payload;
+        let id = this.nfc.bytesToString(payload).substring(3);
+        let marker = this.LampMarkers.getLampMarker(id);
         if (marker == null) {
           continue;
         }

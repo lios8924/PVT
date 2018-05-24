@@ -107,7 +107,7 @@ export class LampMarkers {
 
   getLampMarker(id) {
     for (let i in this.lampMarkers) {
-      if (this.lampMarkers[i].id === id) {
+      if (this.lampMarkers[i].id * 1 === id * 1) {
         return this.lampMarkers[i];
       }
     }
